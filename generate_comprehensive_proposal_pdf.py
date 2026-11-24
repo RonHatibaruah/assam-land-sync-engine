@@ -45,9 +45,9 @@ class NumberedCanvas(canvas.Canvas):
         self.setLineWidth(0.6)
         self.line(54, 45, 541, 45)
 
-        self.setFont("Helvetica", 7.5)
+        self.setFont("Helvetica", 7)
         self.setFillColor(colors.HexColor("#64748B"))
-        self.drawString(54, 34, "BhumiSync: One Change, Everywhere | Automatic Land Records Synchronisation")
+        self.drawString(54, 34, "BhumiSync · Lead Applicant: Ron Hatibaruah · Copyright © 2026 Ron Hatibaruah · All Rights Reserved")
         page_str = f"Page {self._pageNumber} of {page_count}"
         self.drawRightString(541, 34, page_str)
         self.restoreState()
@@ -167,8 +167,8 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         ],
         [
             Paragraph("<b>Solution Name:</b> BhumiSync (ভূমি-সংযোজক) — Real-time Asynchronous Event-Driven Synchronization Engine<br/>"
-                      "<b>Target Stakeholder:</b> Revenue & Disaster Management Department, Government of Assam<br/>"
-                      "<b>Total Grant Requested:</b> ₹40,00,000 (₹40.0 Lakhs) | <b>Duration:</b> 9 Months",
+                      "<b>Lead Applicant:</b> Ron Hatibaruah | <b>Target Department:</b> Revenue & Disaster Management Department, Assam<br/>"
+                      "<b>Total Grant Requested:</b> ₹40,00,000 (₹40.0 Lakhs) | <b>Duration:</b> 9 Months | <b>Copyright © 2026 Ron Hatibaruah</b>",
                       style_cover_sub)
         ]
     ]
@@ -225,7 +225,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         "3. <i>Title Fraud & Double Conveyancing:</i> Inter-system latency enables fraudulent duplicate sales before an encumbrance or mutation reflects across portals.<br/>"
         "4. <i>Administrative Overhead:</i> Revenue officers spend countless human-hours manually cross-verifying disconnected databases.<br/>"
         "<b>Users & Beneficiaries:</b> Citizens/Pattadars, Lat Mandals, Circle Officers, Sub-Registrars, and Financial Institutions.<br/>"
-        "<b>Intended Outcome:</b> A unified, real-time event-driven synchronization middleware ensuring any verified change executes an automated, atomic two-phase distributed update across all systems in under 2 seconds.",
+        "<b>Intended Outcome:</b> A unified, real-time event-driven synchronization middleware ensuring any verified change executes an automated, atomic two-phase distributed update across all systems in Smaller than 2 seconds.",
         style_body
     ))
     story.append(Spacer(1, 8))
@@ -294,7 +294,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         "• <i>Phase 2 (Months 2–3):</i> Architectural Design & Security Blueprint (HLD/LLD, OpenAPI 3.0 Specs).<br/>"
         "• <i>Phase 3 (Months 3–5):</i> Core Engine Prototyping & Staging Sandbox (Kafka, Saga Orchestrator, PostGIS Alpha).<br/>"
         "• <i>Phase 4 (Months 5–6):</i> UI Cockpits & End-to-End MVP Integration (Circle Officer & Lat Mandal dashboards, DSC integration).<br/>"
-        "• <i>Phase 5 (Months 6–7):</i> Rigorous Testing, VAPT & Security Hardening (Cert-IN clearance, load testing >500 txn/s).<br/>"
+        "• <i>Phase 5 (Months 6–7):</i> Rigorous Testing, VAPT & Security Hardening (Cert-IN clearance, load testing Greater Than 500 txn/s).<br/>"
         "• <i>Phase 6 (Months 7–9):</i> Field Pilot Deployment in 2 Revenue Circles, User Training & Statewide Scale-Up Blueprint.",
         style_body
     ))
@@ -525,9 +525,11 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         ],
         [
             Paragraph(
-                "We hereby certify that the proposed solution <b>BhumiSync (ভূমি-সংযোজক)</b> has been architected in strict compliance with the rules, data privacy laws, "
+                "I, <b>Ron Hatibaruah (Lead Applicant)</b>, hereby certify that the proposed solution <b>BhumiSync (ভূমি-সংযোজক)</b> has been architected in strict compliance with the rules, data privacy laws, "
                 "and technical specifications established by the Government of Assam and the Government of India (including MeitY Guidelines, NDSAP, and the DPDP Act 2023). "
-                "The indicative grant budget of ₹40.0 Lakhs is realistic, strictly accounted for, and commits ₹20.0 Lakhs directly to core technical engineering capabilities.",
+                "The indicative grant budget of ₹40.0 Lakhs is realistic, strictly accounted for, and commits ₹20.0 Lakhs directly to core technical engineering capabilities.<br/><br/>"
+                "<b>DISCLAIMER:</b> This proposal dossier and accompanying software architecture were authored and submitted by Lead Applicant Ron Hatibaruah for the North East Seva First Innovation Challenge (NESFIC) 2026 under problem statement NESFIC-D-49. Simulated data and cadastral parcels are synthetic and generated strictly for technical feasibility benchmarking. This is not an official Government of Assam production website.<br/>"
+                "<b>Copyright © 2026 Ron Hatibaruah. All Rights Reserved.</b>",
                 style_body
             )
         ]

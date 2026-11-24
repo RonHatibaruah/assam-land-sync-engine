@@ -3,25 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BhumiSync (ভূমি-সংযোজক) | NESFIC-D-49 Interactive Prototype & Proposal Hub</title>
+
+  <!-- Primary Meta Tags & SEO -->
+  <title>BhumiSync (ভূমি-সংযোজক) | NESFIC-D-49 Land Records Synchronization Engine</title>
+  <meta name="title" content="BhumiSync (ভূমি-সংযোজক) | NESFIC-D-49 Land Records Synchronization Engine">
+  <meta name="description" content="BhumiSync is an enterprise-grade event-driven distributed transaction middleware for NESFIC-D-49, providing real-time synchronization across Dharitree, Bhunaksha, and NGDRS in Assam. Lead Applicant: Ron Hatibaruah.">
+  <meta name="keywords" content="BhumiSync, NESFIC-D-49, Assam Land Records, Dharitree, Bhunaksha, NGDRS, Land Mutation, Namjari, Cadastral GIS, PostGIS, Saga Pattern, Debezium, Kafka, Ron Hatibaruah, Government of Assam, Revenue and Disaster Management">
+  <meta name="author" content="Ron Hatibaruah">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://github.com/RonHatibaruah/assam-land-sync-engine">
+
+  <!-- Geographic / GEO Location Meta Tags (Assam, India) -->
+  <meta name="geo.region" content="IN-AS">
+  <meta name="geo.placename" content="Guwahati, Dispur, Kamrup Metropolitan, Assam, India">
+  <meta name="geo.position" content="26.1445;91.7362">
+  <meta name="ICBM" content="26.1445, 91.7362">
+  <meta name="geo.country" content="India">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/RonHatibaruah/assam-land-sync-engine">
+  <meta property="og:title" content="BhumiSync (ভূমি-সংযোজক) — Automatic Synchronisation Across Land Record Systems in Assam">
+  <meta property="og:description" content="One Change, Everywhere: Real-time, event-driven distributed consensus across Dharitree, Bhunaksha, and NGDRS for NESFIC-D-49. Lead Applicant: Ron Hatibaruah.">
+  <meta property="og:image" content="assets/arch_diagram.png">
+  <meta property="og:site_name" content="BhumiSync Assam">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://github.com/RonHatibaruah/assam-land-sync-engine">
+  <meta name="twitter:title" content="BhumiSync (ভূমি-সংযোজক) — NESFIC-D-49 Land Records Sync">
+  <meta name="twitter:description" content="Sub-second real-time land record synchronization for the Government of Assam. Lead Applicant: Ron Hatibaruah.">
+  <meta name="twitter:image" content="assets/arch_diagram.png">
+
+  <!-- Schema.org JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BhumiSync (ভূমি-সংযোজক)",
+    "applicationCategory": "GovernmentApplication",
+    "operatingSystem": "Linux, Cloud, ASDC",
+    "description": "Real-time asynchronous event-driven distributed transaction middleware synchronizing Dharitree, Bhunaksha, and NGDRS for the Revenue & Disaster Management Department, Government of Assam under NESFIC-D-49.",
+    "url": "https://github.com/RonHatibaruah/assam-land-sync-engine",
+    "author": {
+      "@type": "Person",
+      "name": "Ron Hatibaruah",
+      "jobTitle": "Lead Applicant & Solution Architect"
+    },
+    "spatialCoverage": {
+      "@type": "Place",
+      "name": "Assam, India",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.1445,
+        "longitude": 91.7362
+      }
+    }
+  }
+  </script>
+
+  <!-- Favicon (SVG Cadastral Parcel Data URI) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B365D'/%3E%3Cpolygon points='6,8 26,8 26,24 6,24' fill='%23FEF3C7' stroke='%23D97706' stroke-width='2'/%3E%3Cline x1='16' y1='8' x2='16' y2='24' stroke='%23DC2626' stroke-width='2' stroke-dasharray='2,2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%230A7E8C'/%3E%3C/svg%3E">
+
+  <!-- Tailwind CSS & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     @keyframes pulse-subtle {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.9; transform: scale(1.02); }
+      50% { opacity: 0.92; transform: scale(1.02); }
     }
     .flow-active {
       animation: pulse-subtle 1.8s infinite;
-      box-shadow: 0 0 15px rgba(10, 126, 140, 0.4);
+      box-shadow: 0 0 18px rgba(10, 126, 140, 0.45);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased">
 
   <!-- Top Header Navigation -->
-  <header class="bg-[#1B365D] text-white shadow-md sticky top-0 z-50">
+  <header class="bg-[#1B365D] text-white shadow-md sticky top-0 z-40 border-b border-slate-700">
     <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+      
+      <!-- Brand & Project Details -->
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 rounded-lg bg-[#0A7E8C] flex items-center justify-center text-white text-xl font-bold shadow">
           <i class="fa-solid fa-map-location-dot"></i>
@@ -29,99 +95,111 @@
         <div>
           <div class="flex items-center space-x-2">
             <span class="text-xl font-bold tracking-tight">BhumiSync (ভূমি-সংযোজক)</span>
-            <span class="bg-amber-500 text-slate-900 text-xs px-2 py-0.5 rounded font-bold uppercase tracking-wider">NESFIC-D-49</span>
+            <span class="bg-amber-500 text-slate-900 text-[10px] px-2 py-0.5 rounded font-black uppercase tracking-wider">NESFIC-D-49</span>
           </div>
           <p class="text-xs text-slate-300">Revenue & Disaster Management Department, Govt. of Assam · Real-time Land Records Synchronization</p>
         </div>
       </div>
 
-      <div class="flex items-center space-x-3 text-xs">
-        <span class="bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 px-3 py-1.5 rounded-full flex items-center space-x-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Saga Engine: Active (SLA &lt; 2.0s)</span>
+      <!-- Header Action Controls & Tutorial Link -->
+      <div class="flex flex-wrap items-center gap-2.5 text-xs">
+        
+        <!-- Lead Applicant Badge -->
+        <span class="bg-blue-900/80 text-blue-200 border border-blue-400/30 px-3 py-1.5 rounded-lg flex items-center space-x-1.5">
+          <i class="fa-solid fa-user-check text-emerald-400"></i>
+          <span>Lead Applicant: <b>Ron Hatibaruah</b></span>
         </span>
-        <span class="bg-slate-700/60 text-slate-200 border border-slate-600 px-3 py-1.5 rounded-full">
+
+        <!-- Tutorial Button (Prominent) -->
+        <button onclick="openTutorialModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Tutorial &amp; User Guide</span>
+        </button>
+
+        <!-- Grant Budget Badge -->
+        <span class="bg-slate-800/80 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg hidden sm:inline-flex">
           Grant: <b>₹40.0 Lakhs</b> (Engg: ₹20.0L)
         </span>
-        <a href="https://github.com/RonHatibaruah/assam-land-sync-engine" target="_blank" class="bg-[#0A7E8C] hover:bg-[#08636E] text-white px-3 py-1.5 rounded-lg flex items-center space-x-1 transition font-medium shadow-sm">
+
+        <!-- GitHub Repo Link (SEO/GEO friendly) -->
+        <a href="https://github.com/RonHatibaruah/assam-land-sync-engine" target="_blank" rel="noopener noreferrer" class="bg-[#0A7E8C] hover:bg-[#08636E] text-white px-3 py-1.5 rounded-lg flex items-center space-x-1 transition font-medium shadow-sm">
           <i class="fa-brands fa-github text-sm"></i>
-          <span>GitHub Repo</span>
+          <span>GitHub</span>
         </a>
       </div>
+
     </div>
   </header>
 
   <!-- Sub-header Navigation Tabs -->
   <nav class="bg-white border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 flex space-x-8">
-      <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn py-3.5 px-2 border-b-2 border-[#1B365D] font-bold text-[#1B365D] text-sm flex items-center space-x-2">
+      <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn py-3 px-2 border-b-2 border-[#1B365D] font-bold text-[#1B365D] text-sm flex items-center space-x-2">
         <i class="fa-solid fa-microchip"></i>
-        <span>Live Interactive Prototype</span>
+        <span>Live Interactive Prototype Simulator</span>
       </button>
-      <button onclick="switchTab('form-copy')" id="tab-form-copy" class="tab-btn py-3.5 px-2 border-b-2 border-transparent text-slate-600 hover:text-slate-900 font-medium text-sm flex items-center space-x-2">
-        <i class="fa-regular fa-clipboard"></i>
-        <span>12 Portal Form Sections (Copy Hub)</span>
+      <button onclick="switchTab('architecture')" id="tab-architecture" class="tab-btn py-3 px-2 border-b-2 border-transparent text-slate-600 hover:text-slate-900 font-medium text-sm flex items-center space-x-2">
+        <i class="fa-solid fa-network-wired"></i>
+        <span>System Architecture &amp; Event Mesh</span>
       </button>
-      <button onclick="switchTab('artifacts')" id="tab-artifacts" class="tab-btn py-3.5 px-2 border-b-2 border-transparent text-slate-600 hover:text-slate-900 font-medium text-sm flex items-center space-x-2">
-        <i class="fa-solid fa-file-pdf"></i>
-        <span>PDF Dossiers & Proof of Work</span>
-      </button>
-      <button onclick="switchTab('budget')" id="tab-budget" class="tab-btn py-3.5 px-2 border-b-2 border-transparent text-slate-600 hover:text-slate-900 font-medium text-sm flex items-center space-x-2">
+      <button onclick="switchTab('budget')" id="tab-budget" class="tab-btn py-3 px-2 border-b-2 border-transparent text-slate-600 hover:text-slate-900 font-medium text-sm flex items-center space-x-2">
         <i class="fa-solid fa-chart-pie"></i>
-        <span>Budget (₹40L) & 9M Roadmap</span>
+        <span>Indicative Budget (₹40L) &amp; 9M Roadmap</span>
       </button>
     </div>
   </nav>
 
-  <!-- Main Container -->
+  <!-- Main Content Container -->
   <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
 
     <!-- ========================================================================= -->
-    <!-- TAB 1: INTERACTIVE SIMULATOR PROTOTYPE -->
+    <!-- TAB 1: INTERACTIVE PROTOTYPE SIMULATOR -->
     <!-- ========================================================================= -->
     <div id="section-simulator" class="tab-content space-y-6">
       
-      <!-- Info Banner -->
-      <div class="bg-gradient-to-r from-blue-900 to-[#1B365D] rounded-xl p-5 text-white shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <!-- Interactive Sandbox Control Hero -->
+      <div class="bg-gradient-to-r from-blue-900 via-[#1B365D] to-[#0A7E8C] rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h2 class="text-xl font-bold flex items-center space-x-2">
-            <span>Real-time Mutation & Dag Partition Simulator</span>
-            <span class="bg-emerald-500 text-slate-950 text-xs px-2 py-0.5 rounded font-black uppercase">Live Sandbox</span>
-          </h2>
-          <p class="text-sm text-slate-200 mt-1">
-            Simulate a land sale at SRO (NGDRS) and watch the Kafka CDC event mesh, distributed Dag locking, PostGIS Euler-Poincaré validation, and atomic commit across Dharitree and Bhunaksha.
+          <div class="flex items-center space-x-2 mb-1">
+            <span class="bg-emerald-400 text-slate-950 text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider">Live Sandbox Active</span>
+            <span class="text-xs text-blue-200">SLA: Smaller than 2.0 Seconds</span>
+          </div>
+          <h2 class="text-xl font-bold">Real-time Land Records Synchronization Simulator</h2>
+          <p class="text-xs text-slate-200 mt-1 max-w-2xl leading-relaxed">
+            Execute a live partition mutation (*firaqu-namjari*) and witness the automated Saga orchestrator synchronize <b>Dharitree (RoR Jamabandi)</b> and <b>Bhunaksha (GIS Cadastral Map)</b> with zero manual re-entry and programmatic Dag double-selling protection.
           </p>
         </div>
-        <div class="flex items-center space-x-3">
-          <button onclick="runMutationSimulation('success')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2.5 rounded-lg text-sm shadow flex items-center space-x-2 transition">
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button onclick="runMutationSimulation('success')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs shadow-lg flex items-center space-x-2 transition transform hover:-translate-y-0.5">
             <i class="fa-solid fa-play"></i>
-            <span>Execute Valid Mutation (Sub-Second)</span>
+            <span>Simulate Valid Mutation (420 ms)</span>
           </button>
-          <button onclick="runMutationSimulation('chaos')" class="bg-rose-500 hover:bg-rose-400 text-white font-bold px-4 py-2.5 rounded-lg text-sm shadow flex items-center space-x-2 transition">
+          <button onclick="runMutationSimulation('chaos')" class="bg-rose-500 hover:bg-rose-400 text-white font-bold px-4 py-2.5 rounded-xl text-xs shadow-lg flex items-center space-x-2 transition transform hover:-translate-y-0.5">
             <i class="fa-solid fa-triangle-exclamation"></i>
-            <span>Simulate Spatial Conflict (Chaos Rollback)</span>
+            <span>Simulate Boundary Overlap (Chaos Rollback)</span>
           </button>
         </div>
       </div>
 
-      <!-- Live Pipeline State Indicator -->
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+      <!-- 5-Stage Live Pipeline Progress -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
         <div id="step-1" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
           <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-1">
             <span>1. SRO DEED</span>
             <i class="fa-solid fa-file-contract text-blue-600"></i>
           </div>
-          <p class="text-xs font-semibold text-slate-800" id="step-1-status">Waiting for trigger</p>
-          <p class="text-[10px] text-slate-400 mt-1">NGDRS e-Panjeeyan</p>
+          <p class="text-xs font-semibold text-slate-800" id="step-1-status">Standby for Deed</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">NGDRS e-Panjeeyan</p>
         </div>
 
         <div id="step-2" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
           <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-1">
-            <span>2. CDC & KAFKA</span>
+            <span>2. CDC &amp; KAFKA</span>
             <i class="fa-solid fa-bolt text-amber-500"></i>
           </div>
-          <p class="text-xs font-semibold text-slate-800" id="step-2-status">Idle Mesh</p>
-          <p class="text-[10px] text-slate-400 mt-1">Debezium Connector</p>
+          <p class="text-xs font-semibold text-slate-800" id="step-2-status">Event Mesh Idle</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Debezium Connector</p>
         </div>
 
         <div id="step-3" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
@@ -129,8 +207,8 @@
             <span>3. DAG LOCKING</span>
             <i class="fa-solid fa-lock text-purple-600"></i>
           </div>
-          <p class="text-xs font-semibold text-slate-800" id="step-3-status">Unlocked</p>
-          <p class="text-[10px] text-slate-400 mt-1">Redis Redlock</p>
+          <p class="text-xs font-semibold text-slate-800" id="step-3-status">Dag Unlocked</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Redis Redlock</p>
         </div>
 
         <div id="step-4" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
@@ -138,8 +216,8 @@
             <span>4. POSTGIS GIS</span>
             <i class="fa-solid fa-draw-polygon text-emerald-600"></i>
           </div>
-          <p class="text-xs font-semibold text-slate-800" id="step-4-status">Standby</p>
-          <p class="text-[10px] text-slate-400 mt-1">Euler Invariant Check</p>
+          <p class="text-xs font-semibold text-slate-800" id="step-4-status">Topology Invariant</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Euler Planar Check</p>
         </div>
 
         <div id="step-5" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm transition-all duration-300">
@@ -147,15 +225,15 @@
             <span>5. SAGA COMMIT</span>
             <i class="fa-solid fa-circle-check text-teal-600"></i>
           </div>
-          <p class="text-xs font-semibold text-slate-800" id="step-5-status">Synced</p>
-          <p class="text-[10px] text-slate-400 mt-1">Dharitree &amp; Bhunaksha</p>
+          <p class="text-xs font-semibold text-slate-800" id="step-5-status">Synced State</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Dharitree &amp; Bhunaksha</p>
         </div>
       </div>
 
-      <!-- Live Operational Cockpits (Side-by-Side: Dharitree Jamabandi & Bhunaksha GIS) -->
+      <!-- Side-by-Side Synchronized System Cockpits -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        <!-- Left: Dharitree Textual RoR Cockpit -->
+        <!-- Left Cockpit: Dharitree Textual RoR -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
           <div class="bg-[#1B365D] text-white px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
@@ -200,7 +278,7 @@
               </table>
             </div>
 
-            <!-- Audit Hash Box -->
+            <!-- Audit Ledger -->
             <div class="bg-slate-900 text-slate-300 p-3 rounded-lg font-mono text-[11px] space-y-1">
               <div class="flex justify-between text-slate-400">
                 <span>FORENSIC AUDIT LEDGER (SHA-256)</span>
@@ -212,7 +290,7 @@
           </div>
         </div>
 
-        <!-- Right: Bhunaksha Cadastral GIS Vector Cockpit -->
+        <!-- Right Cockpit: Bhunaksha Cadastral GIS Vector -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
           <div class="bg-[#0A7E8C] text-white px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
@@ -226,9 +304,8 @@
             <!-- Cadastral SVG Canvas -->
             <div class="border-2 border-dashed border-slate-200 rounded-xl bg-slate-50 p-4 flex items-center justify-center min-h-[220px] relative overflow-hidden">
               <svg id="cadastral-svg" viewBox="0 0 400 200" class="w-full h-48">
-                <!-- Outer reference boundaries -->
                 <rect x="10" y="10" width="380" height="180" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
-                <text x="20" y="30" font-size="10" fill="#94A3B8" font-family="sans-serif">Village: Kahilipara · Sheet #04</text>
+                <text x="20" y="30" font-size="10" fill="#94A3B8" font-family="sans-serif">Village: Kahilipara · Sheet #04 · Guwahati</text>
                 
                 <!-- Dag 588 Single Parcel (Default state) -->
                 <g id="dag-single-group">
@@ -238,25 +315,22 @@
                   <text x="200" y="140" text-anchor="middle" font-size="10" fill="#854D0E">Owner: Bipin Sarma</text>
                 </g>
 
-                <!-- Dag Split Parcels (Hidden by default, shown upon partition) -->
+                <!-- Dag Split Parcels (Shown upon partition) -->
                 <g id="dag-split-group" class="hidden">
-                  <!-- SubDag 588/1 -->
                   <polygon points="50,40 230,40 230,170 50,170" fill="#BBF7D0" stroke="#16A34A" stroke-width="2.5" />
                   <text x="140" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">Dag 588/1</text>
                   <text x="140" y="115" text-anchor="middle" font-size="10" fill="#166534">1.50 Bigha (2,006.7 m²)</text>
                   <text x="140" y="132" text-anchor="middle" font-size="9" fill="#14532D">Bipin Sarma</text>
 
-                  <!-- Split Partition Line -->
                   <line x1="230" y1="40" x2="230" y2="170" stroke="#DC2626" stroke-width="3" stroke-dasharray="4,4" />
 
-                  <!-- SubDag 588/2 -->
                   <polygon points="230,40 350,40 350,170 230,170" fill="#BAE6FD" stroke="#0284C7" stroke-width="2.5" />
                   <text x="290" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#0369A1">Dag 588/2</text>
                   <text x="290" y="115" text-anchor="middle" font-size="10" fill="#075985">1.00 Bigha (1,337.8 m²)</text>
                   <text x="290" y="132" text-anchor="middle" font-size="9" fill="#0C4A6E">Ratul Kalita</text>
                 </g>
 
-                <!-- Collision Warning Overlay (for Chaos simulation) -->
+                <!-- Chaos Overlap Overlay -->
                 <g id="dag-chaos-group" class="hidden">
                   <polygon points="180,40 310,40 310,170 180,170" fill="rgba(239, 68, 68, 0.4)" stroke="#DC2626" stroke-width="3" />
                   <text x="245" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#991B1B">SPATIAL COLLISION</text>
@@ -265,7 +339,7 @@
               </svg>
             </div>
 
-            <!-- Cadastral Invariant Metrics Bar -->
+            <!-- Invariant Metrics -->
             <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs flex justify-between items-center">
               <div>
                 <span class="font-bold text-slate-700">Euler Planar Invariant:</span>
@@ -284,112 +358,49 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- TAB 2: 12 PROPOSAL FORM SECTIONS (COPY & PASTE HUB) -->
+    <!-- TAB 2: SYSTEM ARCHITECTURE & EVENT FLOW -->
     <!-- ========================================================================= -->
-    <div id="section-form-copy" class="tab-content hidden space-y-4">
-      <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-center justify-between">
-        <div>
-          <h3 class="font-bold text-blue-900 text-sm">NESFIC-D-49 Proposal Textarea Copy Hub</h3>
-          <p class="text-xs text-blue-700">Every section is strictly within the <b>0/500 word limit</b>. Click "Copy to Clipboard" to paste directly into the portal form.</p>
-        </div>
-        <button onclick="copyAllSections()" class="bg-[#1B365D] hover:bg-[#12243e] text-white px-3.5 py-2 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 shadow">
-          <i class="fa-solid fa-copy"></i>
-          <span>Copy Full Proposal Text File</span>
-        </button>
-      </div>
-
-      <div class="space-y-3" id="sections-accordion">
-        <!-- Rendered dynamically by JavaScript -->
-      </div>
-    </div>
-
-    <!-- ========================================================================= -->
-    <!-- TAB 3: PDF DOSSIERS & PROOF OF WORK ARTIFACTS -->
-    <!-- ========================================================================= -->
-    <div id="section-artifacts" class="tab-content hidden space-y-6">
+    <div id="section-architecture" class="tab-content hidden space-y-6">
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- Artifact 1: Proof of Work PDF -->
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded font-bold uppercase">Mandatory Upload (03)</span>
-              <span class="text-xs text-slate-500 font-mono">0.62 MB · 6 Pages</span>
-            </div>
-            <h3 class="text-base font-bold text-slate-900 mb-1">Proof of Work & Solution Evidence</h3>
-            <p class="text-xs text-slate-600 mb-4">
-              Comprehensive technical evidence document including system architecture diagrams, high-fidelity Circle Officer & Lat Mandal wireframes, latency benchmarks (420 ms avg sync), PostGIS spatial invariant code snippets, and simulated partition mutation case studies.
-            </p>
-            <div class="bg-slate-50 border border-slate-200 p-3 rounded-lg text-xs text-slate-700 space-y-1 mb-4 font-mono">
-              <div>✓ Meets PDF-only criteria (Max 10 MB limit)</div>
-              <div>✓ Includes wireframes & prototype test reports</div>
-              <div>✓ Complies with NESFIC-D-49 mandatory proof rules</div>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-3 pt-3 border-t border-slate-100">
-            <a href="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf" target="_blank" class="flex-1 bg-[#1B365D] hover:bg-[#12243e] text-white text-center py-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center space-x-2 shadow">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span>View &amp; Download PDF</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Artifact 2: Master Proposal PDF -->
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded font-bold uppercase">Additional Supporting Material</span>
-              <span class="text-xs text-slate-500 font-mono">0.99 MB · 7 Pages</span>
-            </div>
-            <h3 class="text-base font-bold text-slate-900 mb-1">Comprehensive Master Proposal Dossier</h3>
-            <p class="text-xs text-slate-600 mb-4">
-              Complete formal government proposal dossier featuring executive summary, formatted Sections 1 through 12, 9-month milestone Gantt chart, ₹40.0 Lakhs detailed financial allocation table, and statutory compliance declarations (MeitY, NDSAP, DPDP Act 2023).
-            </p>
-            <div class="bg-slate-50 border border-slate-200 p-3 rounded-lg text-xs text-slate-700 space-y-1 mb-4 font-mono">
-              <div>✓ Executive summary & detailed narrative</div>
-              <div>✓ Balanced ₹40.0 Lakhs budget table (₹20.0L engg)</div>
-              <div>✓ 9-month phased delivery roadmap & Gantt</div>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-3 pt-3 border-t border-slate-100">
-            <a href="Comprehensive_Proposal_Document_NESFIC_D49.pdf" target="_blank" class="flex-1 bg-[#0A7E8C] hover:bg-[#08636E] text-white text-center py-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center space-x-2 shadow">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span>View &amp; Download PDF</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Assets Gallery -->
       <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center space-x-2">
-          <i class="fa-solid fa-images text-[#0A7E8C]"></i>
-          <span>Embedded Publication Graphics (Generated in Vector / 300 DPI)</span>
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-          <div class="border border-slate-200 rounded-lg p-2 text-center bg-slate-50">
-            <img src="assets/arch_diagram.png" class="h-20 mx-auto object-contain mb-1 rounded" alt="Architecture" />
-            <span class="text-[10px] font-bold text-slate-700 block">Architecture Flow</span>
+        <h3 class="text-base font-bold text-slate-900 mb-1">Enterprise Integration Architecture &amp; Data Pipeline</h3>
+        <p class="text-xs text-slate-500 mb-4">
+          Non-intrusive CDC (Debezium), Kafka Event Mesh, Distributed Saga Orchestration, and PostGIS TopoJSON reconciliation across Assam's land record infrastructure.
+        </p>
+        
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-2 text-center">
+          <img src="assets/arch_diagram.png" class="max-h-[420px] mx-auto object-contain rounded-lg" alt="BhumiSync Architecture Diagram" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div class="bg-blue-50/60 border border-blue-200/80 p-4 rounded-xl">
+            <h4 class="font-bold text-xs text-blue-900 mb-1 flex items-center space-x-1.5">
+              <i class="fa-solid fa-bolt text-blue-600"></i>
+              <span>Debezium Change Data Capture</span>
+            </h4>
+            <p class="text-[11px] text-slate-700 leading-relaxed">
+              Streams row-level write-ahead transaction logs from PostgreSQL/Oracle with zero performance impact on live SRO or Circle Office databases.
+            </p>
           </div>
-          <div class="border border-slate-200 rounded-lg p-2 text-center bg-slate-50">
-            <img src="assets/wireframe_dashboard.png" class="h-20 mx-auto object-contain mb-1 rounded" alt="Wireframes" />
-            <span class="text-[10px] font-bold text-slate-700 block">UI Wireframes</span>
+
+          <div class="bg-emerald-50/60 border border-emerald-200/80 p-4 rounded-xl">
+            <h4 class="font-bold text-xs text-emerald-900 mb-1 flex items-center space-x-1.5">
+              <i class="fa-solid fa-gears text-emerald-600"></i>
+              <span>Distributed Saga Orchestrator</span>
+            </h4>
+            <p class="text-[11px] text-slate-700 leading-relaxed">
+              Executes two-phase consensus. If spatial topology fails on Bhunaksha, compensating actions instantly roll back textual mutations on Dharitree.
+            </p>
           </div>
-          <div class="border border-slate-200 rounded-lg p-2 text-center bg-slate-50">
-            <img src="assets/sync_latency_benchmark.png" class="h-20 mx-auto object-contain mb-1 rounded" alt="Benchmarks" />
-            <span class="text-[10px] font-bold text-slate-700 block">Latency SLA</span>
-          </div>
-          <div class="border border-slate-200 rounded-lg p-2 text-center bg-slate-50">
-            <img src="assets/budget_breakdown.png" class="h-20 mx-auto object-contain mb-1 rounded" alt="Budget" />
-            <span class="text-[10px] font-bold text-slate-700 block">₹40L Budget</span>
-          </div>
-          <div class="border border-slate-200 rounded-lg p-2 text-center bg-slate-50">
-            <img src="assets/gantt_timeline.png" class="h-20 mx-auto object-contain mb-1 rounded" alt="Roadmap" />
-            <span class="text-[10px] font-bold text-slate-700 block">9-Month Gantt</span>
+
+          <div class="bg-amber-50/60 border border-amber-200/80 p-4 rounded-xl">
+            <h4 class="font-bold text-xs text-amber-900 mb-1 flex items-center space-x-1.5">
+              <i class="fa-solid fa-lock text-amber-600"></i>
+              <span>Distributed Dag Locking</span>
+            </h4>
+            <p class="text-[11px] text-slate-700 leading-relaxed">
+              Acquires programmatic Redlocks on Dag IDs the moment a deed is signed, permanently eliminating duplicate conveyancing fraud windows.
+            </p>
           </div>
         </div>
       </div>
@@ -397,15 +408,15 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- TAB 4: BUDGET & ROADMAP -->
+    <!-- TAB 3: BUDGET (₹40L) & 9-MONTH ROADMAP -->
     <!-- ========================================================================= -->
     <div id="section-budget" class="tab-content hidden space-y-6">
       
-      <!-- Budget Breakdown Card -->
+      <!-- Budget Table -->
       <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
         <div class="flex justify-between items-center mb-4">
           <div>
-            <h3 class="text-base font-bold text-slate-900">Indicative Resource & Budget Allocation</h3>
+            <h3 class="text-base font-bold text-slate-900">Indicative Resource &amp; Budget Allocation</h3>
             <p class="text-xs text-slate-500">Strictly balanced against the <b>₹40.0 Lakhs</b> problem statement grant ceiling.</p>
           </div>
           <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold">
@@ -475,24 +486,134 @@
       <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
         <h3 class="text-base font-bold text-slate-900 mb-2">9-Month Phased Implementation Roadmap &amp; Validation</h3>
         <p class="text-xs text-slate-500 mb-4">Solution enters staging sandbox validation in Month 6, followed by Cert-IN security audit and live Revenue Circle field pilot.</p>
-        <img src="assets/gantt_timeline.png" class="w-full rounded-lg border border-slate-200" alt="Gantt Timeline" />
+        <img src="assets/gantt_timeline.png" class="w-full rounded-lg border border-slate-200" alt="Gantt Timeline Roadmap" />
       </div>
 
     </div>
 
   </main>
 
+  <!-- ========================================================================= -->
+  <!-- TUTORIAL MODAL DIALOG -->
+  <!-- ========================================================================= -->
+  <div id="tutorial-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-5 bg-[#1B365D] text-white flex justify-between items-center sticky top-0 z-10">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base">BhumiSync Application Tutorial &amp; Guide</h3>
+            <p class="text-xs text-slate-300">NESFIC-D-49 · Revenue &amp; Disaster Management, Assam</p>
+          </div>
+        </div>
+        <button onclick="closeTutorialModal()" class="text-slate-300 hover:text-white text-lg font-bold p-1">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-5 text-xs text-slate-700 leading-relaxed">
+        
+        <div>
+          <h4 class="font-bold text-sm text-[#1B365D] mb-1.5 flex items-center space-x-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xs">1</span>
+            <span>What Does This Application Do?</span>
+          </h4>
+          <p>
+            <b>BhumiSync (ভূমি-সংযোজক)</b> solves the core challenge of <b>NESFIC-D-49: "One Change, Everywhere: Automatic Synchronisation Across Land Record Systems in Assam"</b>.
+            In Assam, textual records (Dharitree), cadastral maps (Bhunaksha), and deed registrations (NGDRS) reside in disconnected silos. BhumiSync is the real-time event-driven middleware connecting all three so that a deed registration or mutation instantly and atomically propagates across all platforms in <b>under 2 seconds</b>.
+          </p>
+        </div>
+
+        <div class="border-t border-slate-100 pt-4">
+          <h4 class="font-bold text-sm text-[#1B365D] mb-1.5 flex items-center space-x-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xs">2</span>
+            <span>How to Use the Live Prototype Simulator</span>
+          </h4>
+          <ul class="space-y-2 list-disc list-inside">
+            <li><b>Click "Simulate Valid Mutation":</b> Triggers a deed execution event for Dag #588 (2.50 Bighas). You will see the pipeline progress through CDC ingestion, distributed Dag locking, PostGIS Euler-Poincaré geometric verification, and atomic commit. The Jamabandi table and Cadastral vector map split synchronously into <b>Dag 588/1</b> (1.50 B) and <b>Dag 588/2</b> (1.00 B) in ~420 ms.</li>
+            <li><b>Click "Simulate Boundary Overlap (Chaos Rollback)":</b> Simulates an erroneous or conflicting land partition. The GeoSync engine detects the polygon overlap, halts the workflow, and triggers an automated Saga compensating rollback—demonstrating 100% data integrity without database corruption.</li>
+          </ul>
+        </div>
+
+        <div class="border-t border-slate-100 pt-4">
+          <h4 class="font-bold text-sm text-[#1B365D] mb-1.5 flex items-center space-x-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xs">3</span>
+            <span>Key Architectural Guarantees</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
+            <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
+              <b>Distributed Redlock:</b> Locks Dags at SRO stage to eliminate double registration fraud.
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
+              <b>Euler Invariant:</b> Validates planarity &amp; area conservation (Δ = 0.00 sq m).
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-100 pt-4">
+          <h4 class="font-bold text-sm text-[#1B365D] mb-1.5 flex items-center space-x-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center text-xs">4</span>
+            <span>Project Submission &amp; Lead Applicant</span>
+          </h4>
+          <p>
+            This application and engineering proposal are authored by <b>Lead Applicant Ron Hatibaruah</b> for the Government Track under NESFIC 2026. The full project source and documents are maintained on GitHub.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <button onclick="closeTutorialModal()" class="bg-[#1B365D] hover:bg-[#12243e] text-white px-5 py-2 rounded-xl text-xs font-bold transition shadow">
+          Got it, Close Guide
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Notification Toast -->
   <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-2.5 rounded-lg shadow-xl text-xs font-semibold flex items-center space-x-2 opacity-0 pointer-events-none transition-all duration-300 z-50">
     <i class="fa-solid fa-circle-check text-emerald-400"></i>
-    <span id="toast-msg">Text copied to clipboard!</span>
+    <span id="toast-msg">Notification</span>
   </div>
 
-  <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500">
-    BhumiSync (ভূমি-সংযোজক) · Developed for NESFIC 2026 Problem Statement NESFIC-D-49 · Government of Assam
+  <!-- Standardized Government-Style Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-auto py-6 text-slate-600 text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3 text-center sm:text-left sm:flex sm:justify-between sm:items-center sm:space-y-0">
+      
+      <!-- Left: Attribution & Lead Applicant -->
+      <div>
+        <p class="font-bold text-slate-800">
+          BhumiSync (ভূমি-সংযোজক) · Lead Applicant: <span class="text-[#1B365D]">Ron Hatibaruah</span>
+        </p>
+        <p class="text-[11px] text-slate-500 mt-0.5">
+          Submitted for North East Seva First Innovation Challenge (NESFIC) 2026 · Problem Statement: NESFIC-D-49
+        </p>
+      </div>
+
+      <!-- Right: Copyright -->
+      <div class="text-right">
+        <p class="font-bold text-slate-700">Copyright © 2026 Ron Hatibaruah. All Rights Reserved.</p>
+        <p class="text-[11px] text-slate-400 mt-0.5">Revenue &amp; Disaster Management Department, Government of Assam</p>
+      </div>
+
+    </div>
+
+    <!-- Full Disclaimer Notice -->
+    <div class="max-w-7xl mx-auto px-4 mt-4 pt-3 border-t border-slate-100">
+      <p class="text-[10px] text-slate-400 leading-relaxed text-center sm:text-left">
+        <b>Disclaimer:</b> This software platform, prototype simulator, technical architecture, and proposal documentation were engineered and submitted by Lead Applicant Ron Hatibaruah for the North East Seva First Innovation Challenge (NESFIC) 2026 organized by the Assam Innovation &amp; Startup Foundation (AISF), Department of Innovation, Incubation and Startups (DIIS), Government of Assam. All simulated land records, Dag parcels, and cadastral vectors are synthetic and generated strictly for technical demonstration, performance benchmarking, and architectural validation. This application is not an official Government of Assam production portal.
+      </p>
+    </div>
   </footer>
 
-  <!-- Script for Tab Switching, Simulator Animation, and Clipboard Copy -->
+  <!-- Scripts -->
   <script>
     // Tab switching logic
     function switchTab(tabName) {
@@ -506,6 +627,14 @@
       const activeBtn = document.getElementById('tab-' + tabName);
       activeBtn.classList.add('border-[#1B365D]', 'text-[#1B365D]', 'font-bold');
       activeBtn.classList.remove('border-transparent', 'text-slate-600');
+    }
+
+    // Tutorial Modal Controls
+    function openTutorialModal() {
+      document.getElementById('tutorial-modal').classList.remove('hidden');
+    }
+    function closeTutorialModal() {
+      document.getElementById('tutorial-modal').classList.add('hidden');
     }
 
     // Toast notification
@@ -567,7 +696,6 @@
         step4.classList.add('flow-active');
 
         if (type === 'chaos') {
-          // Chaos: simulate overlapping invalid partition
           dagSingle.classList.add('hidden');
           dagChaos.classList.remove('hidden');
           eulerStatus.className = 'text-rose-700 font-bold ml-1';
@@ -582,12 +710,11 @@
             document.getElementById('step-5-status').innerText = 'Saga Rollback Triggered';
             lockBadge.className = 'bg-rose-100 text-rose-800 px-2 py-0.5 rounded-full font-bold';
             lockBadge.innerText = 'Dag 588: Rolled Back (Lock Released)';
-            showToast('Chaos Injected: Overlap detected. Saga executed compensating rollback!');
+            showToast('Chaos Injected: Spatial overlap detected. Saga executed compensating rollback!');
             setTimeout(() => step5.classList.remove('flow-active'), 800);
           }, 300);
 
         } else {
-          // Success Path
           dagSingle.classList.add('hidden');
           dagSplit.classList.remove('hidden');
           eulerStatus.className = 'text-emerald-700 font-bold ml-1';
@@ -628,60 +755,6 @@
           }, 300);
         }
       }, 550);
-    }
-
-    // Load Proposal Form Content dynamically
-    fetch('PROPOSAL_FORM_SUBMISSION.txt')
-      .then(res => res.text())
-      .then(text => {
-        window.fullProposalText = text;
-        const sections = text.split('--------------------------------------------------------------------------------').slice(1);
-        const container = document.getElementById('sections-accordion');
-        
-        for (let i = 0; i < sections.length; i += 2) {
-          const header = sections[i].trim();
-          const content = (sections[i + 1] || '').trim();
-          if (!header || !content) continue;
-
-          const num = header.split('.')[0].trim();
-          const title = header.split('\n')[0].trim();
-          const wordCount = content.split(/\s+/).filter(w => w.length > 0).length;
-
-          const card = document.createElement('div');
-          card.className = 'bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm';
-          card.innerHTML = `
-            <div class="px-4 py-3 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
-              <div class="flex items-center space-x-2">
-                <span class="w-6 h-6 rounded-full bg-[#1B365D] text-white flex items-center justify-center text-xs font-bold">${num}</span>
-                <span class="font-bold text-xs text-slate-800">${title}</span>
-                <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">${wordCount} / 500 words</span>
-              </div>
-              <button onclick="copySingleSection(${i/2})" class="bg-[#0A7E8C] hover:bg-[#08636E] text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center space-x-1 shadow-sm transition">
-                <i class="fa-regular fa-copy"></i>
-                <span>Copy Section</span>
-              </button>
-            </div>
-            <div class="p-4 bg-white text-xs text-slate-700 font-sans leading-relaxed whitespace-pre-wrap max-h-48 overflow-y-auto" id="sec-text-${i/2}">
-${content}
-            </div>
-          `;
-          container.appendChild(card);
-        }
-      });
-
-    function copySingleSection(idx) {
-      const text = document.getElementById('sec-text-' + idx).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        showToast('Section copied to clipboard!');
-      });
-    }
-
-    function copyAllSections() {
-      if (window.fullProposalText) {
-        navigator.clipboard.writeText(window.fullProposalText).then(() => {
-          showToast('Full proposal submission text copied!');
-        });
-      }
     }
   </script>
 </body>

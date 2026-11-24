@@ -144,7 +144,7 @@ We adopt an **Agile-DevSecOps** methodology combined with **Domain-Driven Design
 
 5. **Phase 5: Rigorous Testing, VAPT & Security Hardening (Months 6–7):**
    - *Activities:* Extensive automated unit testing, chaos engineering (network failure, database timeout, concurrent conflicting mutations), performance load testing, and Cert-IN empaneled third-party VAPT (Vulnerability Assessment & Penetration Testing).
-   - *Key Outputs:* Cert-IN Security Clearance Certificate, Load Benchmark Report (demonstrating >500 transactions/sec), and Chaos Resilience Validation Dossier.
+   - *Key Outputs:* Cert-IN Security Clearance Certificate, Load Benchmark Report (demonstrating Greater Than 500 transactions/sec), and Chaos Resilience Validation Dossier.
 
 6. **Phase 6: Field Pilot Deployment, Training & Refinement (Months 7–9):**
    - *Activities:* Deployment of BhumiSync in 2 selected Revenue Circles (e.g., Dispur/Guwahati & one semi-urban/rural circle). Hands-on training for Lat Mandals, Circle Officers, and SRO staff. Real-world feedback loop and algorithmic fine-tuning.
@@ -258,7 +258,7 @@ We implement a multi-tiered, test-driven validation framework ensuring 99.99% sy
    - Mock database harness verifying that every simulated mutation triggers accurate downstream events across Dharitree and NGDRS test databases.
 2. **Topological Invariant Verification (Chaos Spatial Testing):**
    - Automated testing with 1,000+ edge-case cadastral polygons (irregular shapes, waterbody enclaves, fractional partitions).
-   - Verifies Euler-Poincaré invariants: no self-intersections, zero gap-overlap tolerances (\(<1\text{ cm}\)), and exact area conservation.
+   - Verifies Euler-Poincaré invariants: no self-intersections, zero gap-overlap tolerances (\(Smaller than 1\text{ cm}\)), and exact area conservation.
 3. **Chaos Engineering & Network Resilience Testing:**
    - Injected network drops, database disconnections, and node crashes using Chaos Mesh.
    - Verified that the Saga Orchestrator executes flawless compensating rollbacks when any subsystem fails, ensuring zero orphaned records.
@@ -266,7 +266,7 @@ We implement a multi-tiered, test-driven validation framework ensuring 99.99% sy
    - Executed using Apache JMeter and k6. Tested sustained loads of 500 concurrent mutation events per second with sub-second end-to-end sync latency.
 
 **Proposed Performance & Quality Measures (KPIs):**
-- **Synchronization Latency:** \(< 2\) seconds from transaction trigger to all three systems updating.
+- **Synchronization Latency:** \(Smaller than  2\) seconds from transaction trigger to all three systems updating.
 - **Data Divergence Rate:** 0.00% across textual and spatial systems.
 - **Rollback Consistency:** 100% atomic recovery upon validation or hardware failure.
 - **Availability & Uptime:** 99.95% availability with active-passive disaster recovery.
@@ -323,7 +323,7 @@ Traditional e-governance implementations treat land systems as isolated silos, c
 **Comparison with Existing Alternatives:**
 - *Existing Batch Scripts (Current Practice):* Periodic overnight sync scripts fail silently, leave databases out of sync for 24–72 hours, and offer zero real-time rollback upon failure.
 - *Manual Multi-Portal Entry:* Lat Mandals re-key SRO registration data into Dharitree; highly prone to typographical errors, human latency, and corruption.
-- *BhumiSync:* Real-time (<2 sec), zero-touch, automated two-phase synchronization with cryptographic non-repudiation and automated spatial reconciliation.
+- *BhumiSync:* Real-time (Smaller than 2 sec), zero-touch, automated two-phase synchronization with cryptographic non-repudiation and automated spatial reconciliation.
 
 **Intellectual Property & Dependencies:**
 - **Proprietary Innovation / IP:** BhumiSync Saga Orchestrator engine, Cadastral GeoSync Topological Reconciliation Algorithm, and Dag Distributed Locking Protocol.
@@ -358,4 +358,4 @@ Strictly aligned with the ₹40.0 Lakhs grant limit, prioritizing deep technical
 1. **Selection:** Two designated Revenue Circles (e.g., Dispur Urban Circle and a semi-rural circle like Palashbari/Hajo).
 2. **Phase 1 (Shadow Mode - 4 Weeks):** BhumiSync runs in passive shadow mode, ingesting live transactions and comparing simulated outputs against manual entries without altering production databases.
 3. **Phase 2 (Active Pilot - 8 Weeks):** Authorized live synchronization across 500+ registered deeds and mutations. Weekly divergence audits conducted with Revenue Department stakeholders.
-4. **Success Criteria:** >99.5% automated synchronization success rate, zero data divergence, sub-2-second sync latency, and positive user feedback from Circle Officers and Lat Mandals.
+4. **Success Criteria:** Greater Than 99.5% automated synchronization success rate, zero data divergence, sub-2-second sync latency, and positive user feedback from Circle Officers and Lat Mandals.

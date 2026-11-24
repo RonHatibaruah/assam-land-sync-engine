@@ -45,9 +45,9 @@ class NumberedCanvas(canvas.Canvas):
         self.setLineWidth(0.6)
         self.line(54, 45, 541, 45)
 
-        self.setFont("Helvetica", 7.5)
+        self.setFont("Helvetica", 7)
         self.setFillColor(colors.HexColor("#64748B"))
-        self.drawString(54, 34, "Government of Assam — Revenue & Disaster Management Dept | Technical Proposal Dossier")
+        self.drawString(54, 34, "BhumiSync · Lead Applicant: Ron Hatibaruah · Copyright © 2026 Ron Hatibaruah · All Rights Reserved")
         page_str = f"Page {self._pageNumber} of {page_count}"
         self.drawRightString(541, 34, page_str)
         self.restoreState()
@@ -158,8 +158,9 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
     banner_data = [
         [
             Paragraph("<b>NORTH EAST SEVA FIRST INNOVATION CHALLENGE (NESFIC) 2026</b><br/>"
-                      "<font size=8 color='#64748B'>Revenue & Disaster Management Department, Government of Assam | Problem Statement: NESFIC-D-49</font>",
-                      ParagraphStyle('BannerH', parent=style_body, textColor=c_primary, fontSize=9, leading=12))
+                      "<font size=8 color='#64748B'>Revenue & Disaster Management Department, Government of Assam | Problem Statement: NESFIC-D-49<br/>"
+                      "<b>Lead Applicant: Ron Hatibaruah</b> | Copyright © 2026 Ron Hatibaruah. All Rights Reserved.</font>",
+                      ParagraphStyle('BannerH', parent=style_body, textColor=c_primary, fontSize=8.5, leading=11.5))
         ],
         [
             Paragraph("<b>BhumiSync (ভূমি-সংযোজক)</b>: Real-time Asynchronous Distributed Synchronization Across Dharitree, Bhunaksha & NGDRS",
@@ -290,31 +291,31 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
         [
             Paragraph("Distributed Dag Lock Acquisition (Redis)", style_table_cell),
             Paragraph("45 ms (± 5 ms)", style_table_cell),
-            Paragraph("< 200 ms", style_table_cell),
+            Paragraph("Smaller than 200 ms", style_table_cell),
             Paragraph("<font color='#16A34A'><b>PASS</b></font>", style_table_cell)
         ],
         [
             Paragraph("Textual Jamabandi Update (Dharitree)", style_table_cell),
             Paragraph("120 ms (± 15 ms)", style_table_cell),
-            Paragraph("< 500 ms", style_table_cell),
+            Paragraph("Smaller than 500 ms", style_table_cell),
             Paragraph("<font color='#16A34A'><b>PASS</b></font>", style_table_cell)
         ],
         [
             Paragraph("Spatial Dag Vector Split (Bhunaksha/PostGIS)", style_table_cell),
             Paragraph("165 ms (± 20 ms)", style_table_cell),
-            Paragraph("< 1,000 ms", style_table_cell),
+            Paragraph("Smaller than 1,000 ms", style_table_cell),
             Paragraph("<font color='#16A34A'><b>PASS</b></font>", style_table_cell)
         ],
         [
             Paragraph("NGDRS Encumbrance Register Update", style_table_cell),
             Paragraph("90 ms (± 10 ms)", style_table_cell),
-            Paragraph("< 400 ms", style_table_cell),
+            Paragraph("Smaller than 400 ms", style_table_cell),
             Paragraph("<font color='#16A34A'><b>PASS</b></font>", style_table_cell)
         ],
         [
             Paragraph("<b>Total End-to-End Atomic Commit</b>", style_table_cell),
             Paragraph("<b>420 ms (± 35 ms)</b>", style_table_cell),
-            Paragraph("<b>< 2,000 ms</b>", style_table_cell),
+            Paragraph("<b>Smaller than 2,000 ms</b>", style_table_cell),
             Paragraph("<font color='#16A34A'><b>PASS (4.7x faster)</b></font>", style_table_cell)
         ],
         [
@@ -326,7 +327,7 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
         [
             Paragraph("Sustained Transaction Throughput", style_table_cell),
             Paragraph("520 transactions / sec", style_table_cell),
-            Paragraph("> 100 txn / sec", style_table_cell),
+            Paragraph("Greater Than 100 txn / sec", style_table_cell),
             Paragraph("<font color='#16A34A'><b>PASS</b></font>", style_table_cell)
         ]
     ]
@@ -452,18 +453,34 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
     # Sign-off box
     sign_data = [
         [
-            Paragraph("<b>Verified By:</b> Lead Systems Architect & GIS Engineering Team", style_table_cell),
+            Paragraph("<b>Verified By:</b> Lead Applicant: Ron Hatibaruah & Systems Team", style_table_cell),
             Paragraph("<b>Status:</b> Prototype Sandbox Benchmarked & Validated", style_table_cell),
             Paragraph("<b>Date:</b> November 2026", style_table_cell)
         ]
     ]
-    sign_table = Table(sign_data, colWidths=[200, 190, 97])
+    sign_table = Table(sign_data, colWidths=[220, 170, 97])
     sign_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#F8FAFC")),
         ('BOX', (0,0), (-1,-1), 0.8, colors.HexColor("#CBD5E1")),
         ('PADDING', (0,0), (-1,-1), 6),
     ]))
     story.append(sign_table)
+    story.append(Spacer(1, 8))
+
+    # Formal Disclaimer
+    disc_data = [
+        [
+            Paragraph("<b>DISCLAIMER & NOTICE:</b> This technical proof of work document, prototype benchmarks, and architectural designs were authored and submitted by Lead Applicant Ron Hatibaruah for the North East Seva First Innovation Challenge (NESFIC) 2026 under problem statement NESFIC-D-49. All simulated land records and cadastral geometries are synthetic and intended strictly for technical benchmarking and feasibility assessment. Not an official Government of Assam production portal.",
+                      ParagraphStyle('Disc', parent=style_body, fontSize=7, leading=9.5, textColor=c_muted))
+        ]
+    ]
+    disc_table = Table(disc_data, colWidths=[487])
+    disc_table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#F1F5F9")),
+        ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E1")),
+        ('PADDING', (0,0), (-1,-1), 5),
+    ]))
+    story.append(disc_table)
 
     doc.build(story, canvasmaker=NumberedCanvas)
     print(f"Successfully generated {filename}")
