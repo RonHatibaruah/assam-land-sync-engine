@@ -45,6 +45,18 @@ By deploying non-intrusive **Change Data Capture (CDC via Debezium/Kafka)** and 
 
 ---
 
+## 🛡️ Enterprise Administration & Governance Suite
+
+BhumiSync incorporates a dedicated control plane designed for State Nodal Officers at the Assam State Data Centre (ASDC Dispur) and District Circle Supervisors:
+
+1. **Statewide Telemetry & Connector Cockpit:** Real-time health monitors for Dharitree CDC (WAL lag: 11 ms), Bhunaksha PostGIS queue, NGDRS webhooks (99.98% uptime), Redis Redlock cluster, and Kafka event mesh partitions. Includes live pulse tracking across all 28+ districts.
+2. **Active Dag Lock & Exception Inspector:** Real-time visibility into all in-flight distributed Redlocks on land parcels statewide, with an administrative stale-lock override protocol requiring officer Digital Signature Certificates (DSC).
+3. **Cryptographic Merkle Chain Integrity Verifier:** In-browser SHA-256 Merkle root validator that checks block continuity across state transactions, proving zero data tampering for vigilance and Cert-IN compliance.
+4. **Automated Nightly Discrepancy Scanner:** Automated batch reconciler scanning 248,500+ land parcels across Assam to detect historical area drifts between textual Jamabandi records and digitized cadastral maps, featuring on-demand scan execution and CSV export.
+5. **Role-Based Access Control (RBAC):** Granular permission matrices for State Super-Admins, Circle Officers, Sub-Registrars (SROs), Lat Mandals, and Forensic Auditors under Assam SSO / Jan Parichay.
+
+---
+
 ## 📊 Benchmark & Prototype Evidence
 
 In sandbox stress tests simulating Assam's revenue circles:

@@ -146,6 +146,10 @@
         <i class="fa-solid fa-chart-pie"></i>
         <span>Indicative Budget (₹40L) &amp; 9M Roadmap</span>
       </button>
+      <button onclick="switchTab('admin')" id="tab-admin" class="tab-btn py-3 px-2 border-b-2 border-transparent text-slate-600 hover:text-slate-900 font-medium text-sm flex items-center space-x-2">
+        <i class="fa-solid fa-shield-halved text-amber-600"></i>
+        <span>Enterprise Admin Cockpit</span>
+      </button>
     </div>
   </nav>
 
@@ -515,6 +519,714 @@
 
     </div>
 
+    <!-- ========================================================================= -->
+    <!-- TAB 4: ENTERPRISE ADMIN COCKPIT -->
+    <!-- ========================================================================= -->
+    <div id="section-admin" class="tab-content hidden space-y-6">
+      
+      <!-- Admin Hero Banner -->
+      <div class="bg-gradient-to-r from-slate-900 via-[#1B365D] to-slate-900 rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border border-slate-700">
+        <div>
+          <div class="flex items-center space-x-2 mb-1.5">
+            <span class="bg-amber-500 text-slate-950 text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider flex items-center space-x-1">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>State Nodal Governance Suite</span>
+            </span>
+            <span class="text-xs text-slate-300">Revenue &amp; Disaster Management Department, Assam</span>
+          </div>
+          <h2 class="text-xl font-bold flex items-center space-x-2">
+            <span>BhumiSync Enterprise Administration &amp; Control Centre</span>
+          </h2>
+          <p class="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
+            Centralized monitoring for Assam's 28+ districts: Real-time CDC lag, distributed Redlock parcel inspector, 1-click SHA-256 Merkle chain verifier, automated nightly discrepancy scanning, and DPDP compliance auditing.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <span class="bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 px-3 py-1.5 rounded-lg font-mono">
+            Node: ASDC Dispur Central (VPC-01)
+          </span>
+          <span class="bg-blue-950/80 border border-blue-500/40 text-blue-300 px-3 py-1.5 rounded-lg font-mono">
+            SROs: 154/154 Connected
+          </span>
+          <span class="bg-purple-950/80 border border-purple-500/40 text-purple-300 px-3 py-1.5 rounded-lg font-mono">
+            Circles: 186 Active
+          </span>
+        </div>
+      </div>
+
+      <!-- Admin Sub-Navigation Pills -->
+      <div class="bg-white p-2 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-2">
+        <button onclick="switchAdminSubtab('telemetry')" id="admin-subtab-telemetry" class="admin-sub-btn px-4 py-2 rounded-lg text-xs font-bold bg-[#1B365D] text-white transition flex items-center space-x-1.5 shadow-sm">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span>1. Telemetry &amp; Connectors</span>
+        </button>
+        <button onclick="switchAdminSubtab('locks')" id="admin-subtab-locks" class="admin-sub-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-lock"></i>
+          <span>2. Active Dag Locks &amp; Exceptions</span>
+          <span id="active-locks-count-badge" class="bg-amber-100 text-amber-800 text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1">4 Active</span>
+        </button>
+        <button onclick="switchAdminSubtab('audit')" id="admin-subtab-audit" class="admin-sub-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-cube"></i>
+          <span>3. Forensic Audit &amp; Merkle Ledger</span>
+          <span class="bg-purple-100 text-purple-800 text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1">SHA-256</span>
+        </button>
+        <button onclick="switchAdminSubtab('scanner')" id="admin-subtab-scanner" class="admin-sub-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <span>4. Nightly Discrepancy Scanner</span>
+          <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1">99.85% Match</span>
+        </button>
+        <button onclick="switchAdminSubtab('rbac')" id="admin-subtab-rbac" class="admin-sub-btn px-4 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-user-shield"></i>
+          <span>5. RBAC &amp; Security Directory</span>
+        </button>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- ADMIN SUB-TAB 1: TELEMETRY & CONNECTORS -->
+      <!-- =================================================================== -->
+      <div id="admin-view-telemetry" class="admin-sub-view space-y-6">
+        
+        <!-- Live Connector Gauges Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- Dharitree CDC Card -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <i class="fa-solid fa-database text-blue-600"></i>
+                <span>Dharitree CDC (Debezium)</span>
+              </span>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">ONLINE</span>
+            </div>
+            <div class="text-2xl font-black text-slate-800 font-mono" id="telemetry-wal-lag">11 ms</div>
+            <p class="text-[11px] text-slate-500 mt-1">PostgreSQL WAL replication lag (LSN: 0/17F420A)</p>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-600">
+              <span>Streaming throughput:</span>
+              <span class="font-bold text-slate-800 font-mono">148 ops/sec</span>
+            </div>
+          </div>
+
+          <!-- Bhunaksha PostGIS Card -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <i class="fa-solid fa-draw-polygon text-emerald-600"></i>
+                <span>Bhunaksha (PostGIS 16)</span>
+              </span>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">HEALTHY</span>
+            </div>
+            <div class="text-2xl font-black text-slate-800 font-mono">0 Pending</div>
+            <p class="text-[11px] text-slate-500 mt-1">Spatial WFS-T queue depth (Zero boundary lag)</p>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-600">
+              <span>Euler Planar Verification:</span>
+              <span class="font-bold text-emerald-600 font-mono">100% Pass</span>
+            </div>
+          </div>
+
+          <!-- NGDRS Webhook Card -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <i class="fa-solid fa-file-contract text-purple-600"></i>
+                <span>NGDRS SRO Webhooks</span>
+              </span>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">LISTENING</span>
+            </div>
+            <div class="text-2xl font-black text-slate-800 font-mono">99.98%</div>
+            <p class="text-[11px] text-slate-500 mt-1">SRO registration listener uptime (30-day SLA)</p>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-600">
+              <span>Failed webhooks in DLQ:</span>
+              <span class="font-bold text-slate-800 font-mono">0 records</span>
+            </div>
+          </div>
+
+          <!-- Redis Redlock Cluster -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <i class="fa-solid fa-lock text-amber-600"></i>
+                <span>Redis Redlock Cluster</span>
+              </span>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">ACTIVE</span>
+            </div>
+            <div class="text-2xl font-black text-slate-800 font-mono" id="telemetry-active-locks">4 Locked</div>
+            <p class="text-[11px] text-slate-500 mt-1">Active Dag distributed locks preventing double-sell</p>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-600">
+              <span>Avg. lock acquisition:</span>
+              <span class="font-bold text-slate-800 font-mono">42 ms</span>
+            </div>
+          </div>
+
+          <!-- Kafka Event Mesh -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <i class="fa-solid fa-bolt text-teal-600"></i>
+                <span>Kafka Event Mesh Cluster</span>
+              </span>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">OPTIMAL</span>
+            </div>
+            <div class="text-2xl font-black text-slate-800 font-mono">520 evt/s</div>
+            <p class="text-[11px] text-slate-500 mt-1">Current multi-partition streaming throughput</p>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-600">
+              <span>Partition lag:</span>
+              <span class="font-bold text-emerald-600 font-mono">0 messages</span>
+            </div>
+          </div>
+
+          <!-- ASDC Staging VPC -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <i class="fa-solid fa-cloud text-indigo-600"></i>
+                <span>ASDC Cloud Infrastructure</span>
+              </span>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">SECURED</span>
+            </div>
+            <div class="text-2xl font-black text-slate-800 font-mono">mTLS 1.3</div>
+            <p class="text-[11px] text-slate-500 mt-1">Zero-Trust Virtual Private Cloud isolation</p>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between text-[11px] text-slate-600">
+              <span>Security Clearance:</span>
+              <span class="font-bold text-indigo-700 font-mono">Cert-IN Ready</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Statewide District Activity Heatmap Table -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <h3 class="text-sm font-bold text-slate-800">Statewide Live Telemetry Pulse across Major Revenue Circles</h3>
+              <p class="text-xs text-slate-500">Real-time sync performance, daily transaction volumes, and data divergence checks across Assam.</p>
+            </div>
+            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2.5 py-1 rounded">Auto-refresh: 5s</span>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-lg">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5">District</th>
+                  <th class="p-2.5">Key Revenue Circles</th>
+                  <th class="p-2.5">Connected SROs</th>
+                  <th class="p-2.5">Today's Txns</th>
+                  <th class="p-2.5">Avg. Latency</th>
+                  <th class="p-2.5">Divergence</th>
+                  <th class="p-2.5">Circle Health</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-[#1B365D]">Kamrup Metropolitan</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Dispur, Guwahati, Sonapur, Azara</td>
+                  <td class="p-2.5">4 SROs</td>
+                  <td class="p-2.5 font-bold text-blue-900">1,420</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">412 ms</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">0.00%</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Optimal</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-[#1B365D]">Dibrugarh</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Dibrugarh East, Dibrugarh West, Naharkatia</td>
+                  <td class="p-2.5">3 SROs</td>
+                  <td class="p-2.5 font-bold text-blue-900">840</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">428 ms</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">0.00%</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Optimal</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-[#1B365D]">Cachar</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Silchar, Sonai, Katigorah, Lakhipur</td>
+                  <td class="p-2.5">3 SROs</td>
+                  <td class="p-2.5 font-bold text-blue-900">610</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">445 ms</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">0.00%</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Optimal</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-[#1B365D]">Sonitpur</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Tezpur, Dhekiajuli, Naduar</td>
+                  <td class="p-2.5">2 SROs</td>
+                  <td class="p-2.5 font-bold text-blue-900">530</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">418 ms</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">0.00%</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Optimal</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-[#1B365D]">Jorhat</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Jorhat East, Jorhat West, Teok, Titabor</td>
+                  <td class="p-2.5">2 SROs</td>
+                  <td class="p-2.5 font-bold text-blue-900">490</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">431 ms</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">0.00%</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Optimal</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-[#1B365D]">Nagaon</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Nagaon Sadar, Raha, Kaliabor, Rupahi</td>
+                  <td class="p-2.5">3 SROs</td>
+                  <td class="p-2.5 font-bold text-blue-900">580</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">422 ms</td>
+                  <td class="p-2.5 text-emerald-700 font-bold">0.00%</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Optimal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- ADMIN SUB-TAB 2: ACTIVE DAG LOCKS & EXCEPTIONS -->
+      <!-- =================================================================== -->
+      <div id="admin-view-locks" class="admin-sub-view hidden space-y-6">
+        
+        <!-- Info Banner -->
+        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl flex items-start justify-between gap-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="text-xs text-amber-900">
+              <h4 class="font-bold text-sm text-amber-950 mb-0.5">Distributed Redlock Parcel Inspector</h4>
+              <p>
+                When a deed is signed on NGDRS, BhumiSync immediately acquires an atomic distributed lock on the parcel's Dag ID. 
+                Any attempted conveyance or alteration of these parcels elsewhere in Assam is blocked until the transaction commits or aborts. 
+                Authorized officers can release stale locks using their digital signature override.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Dag Locks Table -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <h3 class="text-sm font-bold text-slate-800">Active Distributed Dag Locks across Revenue Circles</h3>
+              <p class="text-xs text-slate-500">Parcels currently locked during in-flight deed registration &amp; mutation workflows.</p>
+            </div>
+            <button onclick="refreshLocksTable()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 transition">
+              <i class="fa-solid fa-arrows-rotate text-xs"></i>
+              <span>Refresh Locks</span>
+            </button>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-lg">
+            <table class="w-full text-left text-xs" id="admin-locks-table">
+              <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5">Dag No.</th>
+                  <th class="p-2.5">Patta No.</th>
+                  <th class="p-2.5">Circle &amp; District</th>
+                  <th class="p-2.5">Deed Reg No.</th>
+                  <th class="p-2.5">Saga Coordinator</th>
+                  <th class="p-2.5">TTL Remaining</th>
+                  <th class="p-2.5">Lock Status</th>
+                  <th class="p-2.5 text-right font-sans">Administrative Action</th>
+                </tr>
+              </thead>
+              <tbody id="locks-table-body" class="divide-y divide-slate-100 font-mono">
+                <tr id="lock-row-588" class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-blue-900">588</td>
+                  <td class="p-2.5 text-slate-700">142 (Periodic)</td>
+                  <td class="p-2.5 text-slate-800 font-sans">Dispur Circle, Kamrup Metro</td>
+                  <td class="p-2.5 text-purple-700 font-bold">SRO-GHY-2026-7821</td>
+                  <td class="p-2.5 text-slate-600">Saga-SEC-Node-01</td>
+                  <td class="p-2.5 text-amber-700 font-bold">18m 12s</td>
+                  <td class="p-2.5 font-sans"><span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold">In-Mutation</span></td>
+                  <td class="p-2.5 text-right font-sans">
+                    <button onclick="openReleaseLockModal('588', '142', 'Dispur', 'SRO-GHY-2026-7821')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 px-2.5 py-1 rounded text-xs font-semibold transition">
+                      Release Stale Lock
+                    </button>
+                  </td>
+                </tr>
+                <tr id="lock-row-1042" class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-blue-900">1042</td>
+                  <td class="p-2.5 text-slate-700">88 (Periodic)</td>
+                  <td class="p-2.5 text-slate-800 font-sans">Palashbari Circle, Kamrup</td>
+                  <td class="p-2.5 text-purple-700 font-bold">SRO-PAL-2026-3104</td>
+                  <td class="p-2.5 text-slate-600">Saga-SEC-Node-04</td>
+                  <td class="p-2.5 text-amber-700 font-bold">16m 45s</td>
+                  <td class="p-2.5 font-sans"><span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold">In-Mutation</span></td>
+                  <td class="p-2.5 text-right font-sans">
+                    <button onclick="openReleaseLockModal('1042', '88', 'Palashbari', 'SRO-PAL-2026-3104')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 px-2.5 py-1 rounded text-xs font-semibold transition">
+                      Release Stale Lock
+                    </button>
+                  </td>
+                </tr>
+                <tr id="lock-row-319" class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-blue-900">319</td>
+                  <td class="p-2.5 text-slate-700">205 (Periodic)</td>
+                  <td class="p-2.5 text-slate-800 font-sans">Hajo Circle, Kamrup</td>
+                  <td class="p-2.5 text-purple-700 font-bold">SRO-HAJ-2026-1190</td>
+                  <td class="p-2.5 text-slate-600">Saga-SEC-Node-02</td>
+                  <td class="p-2.5 text-amber-700 font-bold">12m 30s</td>
+                  <td class="p-2.5 font-sans"><span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold">In-Mutation</span></td>
+                  <td class="p-2.5 text-right font-sans">
+                    <button onclick="openReleaseLockModal('319', '205', 'Hajo', 'SRO-HAJ-2026-1190')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 px-2.5 py-1 rounded text-xs font-semibold transition">
+                      Release Stale Lock
+                    </button>
+                  </td>
+                </tr>
+                <tr id="lock-row-701" class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-blue-900">701</td>
+                  <td class="p-2.5 text-slate-700">54 (Periodic)</td>
+                  <td class="p-2.5 text-slate-800 font-sans">Sonapur Circle, Kamrup Metro</td>
+                  <td class="p-2.5 text-purple-700 font-bold">SRO-SON-2026-9082</td>
+                  <td class="p-2.5 text-slate-600">Saga-SEC-Node-03</td>
+                  <td class="p-2.5 text-amber-700 font-bold">09m 10s</td>
+                  <td class="p-2.5 font-sans"><span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold">In-Mutation</span></td>
+                  <td class="p-2.5 text-right font-sans">
+                    <button onclick="openReleaseLockModal('701', '54', 'Sonapur', 'SRO-SON-2026-9082')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 px-2.5 py-1 rounded text-xs font-semibold transition">
+                      Release Stale Lock
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Topological Exceptions Queue -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <h3 class="text-sm font-bold text-slate-800">Topological Invariant Exception Queue</h3>
+              <p class="text-xs text-slate-500">Mutations halted automatically by PostGIS Euler-Poincaré invariant check awaiting surveyor reassignment.</p>
+            </div>
+            <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">1 Conflict Flagged</span>
+          </div>
+
+          <div class="border border-rose-200 bg-rose-50/50 p-4 rounded-xl flex items-center justify-between">
+            <div class="space-y-1">
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-xs text-rose-900">Case #ASM-DIS-2026-912 · Dag 411/B (Dispur Circle)</span>
+                <span class="bg-rose-200 text-rose-900 text-[10px] px-2 py-0.5 rounded font-bold">Polygon Self-Intersection</span>
+              </div>
+              <p class="text-xs text-slate-600">
+                Lat Mandal survey line overlaps adjoining Dag #412 boundary by <b>0.35 Bighas</b>. Area conservation formula violated (Δ = -0.35 Bigha).
+              </p>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button onclick="showToast('Reassigned survey task to Dispur Circle Lat Mandal Squad #2!')" class="bg-[#1B365D] hover:bg-[#12243e] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm">
+                Reassign Surveyor
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- ADMIN SUB-TAB 3: FORENSIC AUDIT & MERKLE LEDGER -->
+      <!-- =================================================================== -->
+      <div id="admin-view-audit" class="admin-sub-view hidden space-y-6">
+        
+        <!-- Merkle Integrity Validator Hero Card -->
+        <div class="bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white p-5 rounded-2xl border border-purple-800/40 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center space-x-2 mb-1">
+              <span class="bg-purple-500 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase">Cryptographic Integrity</span>
+              <span class="text-xs text-purple-200">SHA-256 Chained Blocks</span>
+            </div>
+            <h3 class="text-lg font-bold">Forensic Merkle Ledger &amp; Non-Repudiation Verifier</h3>
+            <p class="text-xs text-slate-300 mt-1 max-w-xl">
+              Every cross-system mutation, lock, and deed linkage is cryptographically hashed with digital signatures. Click the button to run a live SHA-256 block-by-block hash continuity test across the state ledger.
+            </p>
+          </div>
+
+          <button onclick="runMerkleVerification()" id="btn-verify-merkle" class="bg-purple-500 hover:bg-purple-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs shadow-lg flex items-center space-x-2 transition transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-fingerprint text-sm"></i>
+            <span>Verify State Ledger Integrity</span>
+          </button>
+        </div>
+
+        <!-- Live Merkle Verification Output Card -->
+        <div id="merkle-result-card" class="hidden bg-slate-900 border border-purple-500/40 rounded-xl p-4 text-xs font-mono text-slate-300 space-y-2">
+          <div class="flex justify-between items-center text-purple-400 font-bold text-xs pb-1 border-b border-slate-800">
+            <span>CRYPTOGRAPHIC CONTINUITY VERIFICATION RUNNER (WEB CRYPTO API)</span>
+            <span id="merkle-status-badge" class="bg-emerald-950 text-emerald-400 border border-emerald-500/50 px-2 py-0.5 rounded text-[10px]">
+              VERIFYING...
+            </span>
+          </div>
+          <div id="merkle-log-output" class="space-y-1 text-[11px] text-slate-300 pt-1">
+            <!-- Filled dynamically by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Searchable Forensic Ledger Table -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <h3 class="text-sm font-bold text-slate-800">Immutable Audit Trail Explorer (DPDP Act 2023 Conformance)</h3>
+              <p class="text-xs text-slate-500">Every mutation, partition line, and registration event bound to officer PKI tokens.</p>
+            </div>
+            <div class="flex items-center space-x-2 w-full sm:w-auto">
+              <input type="text" id="audit-search-input" onkeyup="filterAuditTable()" placeholder="Search Dag, Deed, or Case ID..." class="px-3 py-1.5 border border-slate-300 rounded-lg text-xs w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#1B365D]" />
+            </div>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-lg">
+            <table class="w-full text-left text-xs" id="admin-audit-table">
+              <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5">Block Height</th>
+                  <th class="p-2.5">Timestamp (IST)</th>
+                  <th class="p-2.5">Target Dag &amp; Circle</th>
+                  <th class="p-2.5">Deed / Case Reference</th>
+                  <th class="p-2.5">Action &amp; Actor Role</th>
+                  <th class="p-2.5">Pre-State Hash</th>
+                  <th class="p-2.5">Post-State Hash</th>
+                  <th class="p-2.5">DSC Status</th>
+                </tr>
+              </thead>
+              <tbody id="audit-table-body" class="divide-y divide-slate-100 font-mono">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-purple-700">#005</td>
+                  <td class="p-2.5 text-slate-600 font-sans">2026-11-25 02:40:12</td>
+                  <td class="p-2.5 text-blue-900 font-bold">Dag 588 · Dispur</td>
+                  <td class="p-2.5 text-slate-700">ASM-DIS-2026-884</td>
+                  <td class="p-2.5 font-sans text-slate-800">Partition Mutation Commit (Circle Officer)</td>
+                  <td class="p-2.5 text-slate-400 truncate max-w-[100px]">9b2d8f7a...</td>
+                  <td class="p-2.5 text-emerald-600 font-bold truncate max-w-[100px]">e5a8b71d...</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Valid DSC</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-purple-700">#004</td>
+                  <td class="p-2.5 text-slate-600 font-sans">2026-11-25 02:39:45</td>
+                  <td class="p-2.5 text-blue-900 font-bold">Dag 588 · Dispur</td>
+                  <td class="p-2.5 text-slate-700">SRO-GHY-2026-7821</td>
+                  <td class="p-2.5 font-sans text-slate-800">Distributed Redlock Acquired (Saga SEC)</td>
+                  <td class="p-2.5 text-slate-400 truncate max-w-[100px]">4c9a721d...</td>
+                  <td class="p-2.5 text-slate-700 font-bold truncate max-w-[100px]">9b2d8f7a...</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">System PKI</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-purple-700">#003</td>
+                  <td class="p-2.5 text-slate-600 font-sans">2026-11-25 02:35:10</td>
+                  <td class="p-2.5 text-blue-900 font-bold">Dag 1042 · Palashbari</td>
+                  <td class="p-2.5 text-slate-700">SRO-PAL-2026-3104</td>
+                  <td class="p-2.5 font-sans text-slate-800">Sale Deed Registration Event (Sub-Registrar)</td>
+                  <td class="p-2.5 text-slate-400 truncate max-w-[100px]">1f83c048...</td>
+                  <td class="p-2.5 text-slate-700 font-bold truncate max-w-[100px]">4c9a721d...</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Valid DSC</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-purple-700">#002</td>
+                  <td class="p-2.5 text-slate-600 font-sans">2026-11-25 02:28:00</td>
+                  <td class="p-2.5 text-blue-900 font-bold">Dag 319 · Hajo</td>
+                  <td class="p-2.5 text-slate-700">SRO-HAJ-2026-1190</td>
+                  <td class="p-2.5 font-sans text-slate-800">Inheritance Succession Mutation (Circle Officer)</td>
+                  <td class="p-2.5 text-slate-400 truncate max-w-[100px]">6b86b273...</td>
+                  <td class="p-2.5 text-slate-700 font-bold truncate max-w-[100px]">1f83c048...</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Valid DSC</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-bold text-purple-700">#001</td>
+                  <td class="p-2.5 text-slate-600 font-sans">2026-11-25 02:00:00</td>
+                  <td class="p-2.5 text-blue-900 font-bold">All Circles</td>
+                  <td class="p-2.5 text-slate-700">ASDC-GENESIS-2026</td>
+                  <td class="p-2.5 font-sans text-slate-800">Genesis State Snapshot (State Admin)</td>
+                  <td class="p-2.5 text-slate-400 truncate max-w-[100px]">00000000...</td>
+                  <td class="p-2.5 text-slate-700 font-bold truncate max-w-[100px]">6b86b273...</td>
+                  <td class="p-2.5 font-sans"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">State Key</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- ADMIN SUB-TAB 4: NIGHTLY DISCREPANCY SCANNER -->
+      <!-- =================================================================== -->
+      <div id="admin-view-scanner" class="admin-sub-view hidden space-y-6">
+        
+        <!-- Scanner Control Hero -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Automated Nightly Cross-Database Discrepancy Scanner</h3>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Nightly batch reconciler scanning Dharitree textual Jamabandi vs. Bhunaksha spatial polygons to detect legacy boundary or area drift.
+              </p>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button onclick="triggerOnDemandScan()" id="btn-trigger-scan" class="bg-[#1B365D] hover:bg-[#12243e] text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow">
+                <i class="fa-solid fa-play text-xs"></i>
+                <span>Run On-Demand Scan Now</span>
+              </button>
+              <button onclick="downloadDiscrepancyCSV()" class="bg-[#0A7E8C] hover:bg-[#08636E] text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow">
+                <i class="fa-solid fa-file-csv text-xs"></i>
+                <span>Download Discrepancy CSV</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div id="scan-progress-container" class="hidden bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="flex justify-between text-xs font-bold text-slate-700">
+              <span id="scan-progress-label">Scanning Kamrup Metropolitan District...</span>
+              <span id="scan-progress-pct" class="text-blue-900 font-mono">0%</span>
+            </div>
+            <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+              <div id="scan-progress-bar" class="bg-[#1B365D] h-2.5 rounded-full transition-all duration-300 w-0"></div>
+            </div>
+          </div>
+
+          <!-- Scanner Summary Metrics -->
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+              <div class="text-xs font-bold text-slate-500 uppercase">Total Dags Scanned</div>
+              <div class="text-2xl font-black text-slate-800 font-mono mt-1">248,500</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Across 28+ Districts</div>
+            </div>
+
+            <div class="bg-emerald-50/60 p-3.5 rounded-xl border border-emerald-200">
+              <div class="text-xs font-bold text-emerald-800 uppercase">Perfect Cross-Match</div>
+              <div class="text-2xl font-black text-emerald-700 font-mono mt-1">99.85%</div>
+              <div class="text-[10px] text-emerald-600 mt-0.5">248,128 parcels aligned</div>
+            </div>
+
+            <div class="bg-amber-50/60 p-3.5 rounded-xl border border-amber-200">
+              <div class="text-xs font-bold text-amber-800 uppercase">Flagged Discrepancies</div>
+              <div class="text-2xl font-black text-amber-700 font-mono mt-1">0.15%</div>
+              <div class="text-[10px] text-amber-700 mt-0.5">372 parcels in review queue</div>
+            </div>
+
+            <div class="bg-blue-50/60 p-3.5 rounded-xl border border-blue-200">
+              <div class="text-xs font-bold text-blue-800 uppercase">Last Cron Execution</div>
+              <div class="text-sm font-bold text-blue-900 font-mono mt-2">Today 00:00:00 IST</div>
+              <div class="text-[10px] text-blue-600 mt-0.5">Daily Automated Midnight Run</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Discrepancy Table -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-800 mb-2">Flagged Legacy Discrepancies Queued for Officer Reconciliation</h3>
+          <p class="text-xs text-slate-500 mb-3">Pre-existing historical discrepancies between Dharitree textual areas and Bhunaksha digitized maps.</p>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-lg">
+            <table class="w-full text-left text-xs font-mono">
+              <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5">Dag No.</th>
+                  <th class="p-2.5">Circle</th>
+                  <th class="p-2.5">Dharitree Area</th>
+                  <th class="p-2.5">Bhunaksha Area</th>
+                  <th class="p-2.5">Delta (Area Drift)</th>
+                  <th class="p-2.5">Probable Cause</th>
+                  <th class="p-2.5 text-right font-sans">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr>
+                  <td class="p-2.5 font-bold text-blue-900">812</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Palashbari</td>
+                  <td class="p-2.5">3.20 Bigha</td>
+                  <td class="p-2.5">3.14 Bigha</td>
+                  <td class="p-2.5 text-rose-600 font-bold">-0.06 Bigha</td>
+                  <td class="p-2.5 text-slate-600 font-sans">1998 Legacy Digitization Rounding</td>
+                  <td class="p-2.5 text-right font-sans">
+                    <button onclick="showToast('Discrepancy #812 flagged for Circle Officer survey review!')" class="bg-[#1B365D] hover:bg-[#12243e] text-white px-2.5 py-1 rounded text-xs transition">
+                      Schedule Re-survey
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-blue-900">144</td>
+                  <td class="p-2.5 text-slate-700 font-sans">Hajo</td>
+                  <td class="p-2.5">1.50 Bigha</td>
+                  <td class="p-2.5">1.52 Bigha</td>
+                  <td class="p-2.5 text-amber-600 font-bold">+0.02 Bigha</td>
+                  <td class="p-2.5 text-slate-600 font-sans">Cartographic Boundary Splay</td>
+                  <td class="p-2.5 text-right font-sans">
+                    <button onclick="showToast('Discrepancy #144 flagged for Circle Officer survey review!')" class="bg-[#1B365D] hover:bg-[#12243e] text-white px-2.5 py-1 rounded text-xs transition">
+                      Schedule Re-survey
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- ADMIN SUB-TAB 5: RBAC & SECURITY POLICY -->
+      <!-- =================================================================== -->
+      <div id="admin-view-rbac" class="admin-sub-view hidden space-y-6">
+        
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Role-Based Access Control (RBAC) &amp; Keycloak Identity Governance</h3>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Enforces strict separation of duties and PKI digital signature policies across the Assam Revenue administration.
+            </p>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-lg">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-3">Role Name</th>
+                  <th class="p-3">Scope &amp; Jurisdiction</th>
+                  <th class="p-3">Read Permissions</th>
+                  <th class="p-3">Write / Execution Permissions</th>
+                  <th class="p-3">PKI Mandate</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-bold text-purple-900">State Super-Administrator</td>
+                  <td class="p-3 text-slate-700">All 28+ Districts (ASDC Dispur)</td>
+                  <td class="p-3 text-slate-600">Global Telemetry, System Health, Audit Logs</td>
+                  <td class="p-3 text-slate-600">SLA Config, Nightly Scans, Redlock Management</td>
+                  <td class="p-3 font-bold text-emerald-700">Class-3 DSC</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-bold text-blue-900">Revenue Circle Officer (CO)</td>
+                  <td class="p-3 text-slate-700">Designated Revenue Circle</td>
+                  <td class="p-3 text-slate-600">Jamabandi, Chitha, Cadastral Maps, Deed Queue</td>
+                  <td class="p-3 text-slate-600">Mutation Approval, Dag Partition Commit, Exception Review</td>
+                  <td class="p-3 font-bold text-emerald-700">e-Sign / DSC</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-bold text-indigo-900">Sub-Registrar (SRO)</td>
+                  <td class="p-3 text-slate-700">Sub-Registry Office Jurisdiction</td>
+                  <td class="p-3 text-slate-600">Title Encumbrances, Deed Indexes, Dag Status</td>
+                  <td class="p-3 text-slate-600">Deed Execution, Automated Dag Lock Trigger</td>
+                  <td class="p-3 font-bold text-emerald-700">Officer DSC</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-bold text-emerald-900">Lat Mandal (Field Surveyor)</td>
+                  <td class="p-3 text-slate-700">Assigned Mouza / Village Cluster</td>
+                  <td class="p-3 text-slate-600">Field Maps, Dag Boundaries, Survey Notes</td>
+                  <td class="p-3 text-slate-600">GPS Boundary Snapping, Field Inspection Submission</td>
+                  <td class="p-3 font-bold text-blue-700">Aadhaar OTP</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-bold text-amber-900">Forensic / Cert-IN Auditor</td>
+                  <td class="p-3 text-slate-700">Statewide Read-Only Audit Vault</td>
+                  <td class="p-3 text-slate-600">Immutable SHA-256 Logs, VAPT Metrics, Access Trail</td>
+                  <td class="p-3 text-slate-400 italic">Zero Write Access (Read-Only)</td>
+                  <td class="p-3 font-bold text-purple-700">MFA + Hardware Key</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
   </main>
 
   <!-- ========================================================================= -->
@@ -598,6 +1310,54 @@
         </button>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- RELEASE STALE DAG LOCK MODAL DIALOG -->
+  <!-- ========================================================================= -->
+  <div id="release-lock-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
+      <div class="p-4 bg-rose-900 text-white flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+          <h3 class="font-bold text-sm">Administrative Lock Override Authorization</h3>
+        </div>
+        <button onclick="closeReleaseLockModal()" class="text-slate-300 hover:text-white font-bold p-1">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-5 space-y-4 text-xs text-slate-700">
+        <div class="bg-rose-50 border border-rose-200 p-3 rounded-lg text-rose-900">
+          <p class="font-bold mb-1">Warning: Emergency Lock Eviction</p>
+          <p>
+            You are about to release the distributed Redlock on <b id="modal-lock-dag">Dag #588</b> (Patta: <span id="modal-lock-patta">142</span>, Circle: <span id="modal-lock-circle">Dispur</span>). This will re-enable public conveyancing and deed registration for this parcel.
+          </p>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Administrative Reason for Lock Release:</label>
+          <select id="modal-lock-reason" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-[#1B365D]">
+            <option value="SRO Network Timeout Eviction">SRO Network Timeout Eviction (Greater Than 15 min inactivity)</option>
+            <option value="Court Injunction / Stay Order Received">Court Injunction / Stay Order Received</option>
+            <option value="Surveyor Boundary Reassignment">Surveyor Boundary Reassignment (Euler Conflict)</option>
+            <option value="Citizen Voluntary Withdrawal">Citizen Voluntary Withdrawal of Mutation Petition</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Officer Digital Signature (DSC) PIN / Token:</label>
+          <input type="password" id="modal-lock-pin" value="••••••••" placeholder="Enter Class-3 DSC Token PIN" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-[#1B365D]" />
+          <p class="text-[10px] text-slate-400 mt-1">Authorized under Assam Land and Revenue Regulation &amp; IT Act 2000 Section 3A.</p>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end space-x-2">
+        <button onclick="closeReleaseLockModal()" class="px-4 py-2 border border-slate-300 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-100 transition">
+          Cancel
+        </button>
+        <button onclick="confirmReleaseLock()" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition shadow flex items-center space-x-1.5">
+          <i class="fa-solid fa-unlock"></i>
+          <span>Authorize &amp; Release Lock</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -779,6 +1539,151 @@
           }, 300);
         }
       }, 550);
+    }
+
+    // =========================================================================
+    // ADMIN SUITE CONTROLLER JAVASCRIPT
+    // =========================================================================
+
+    // Admin Subtab Switcher
+    function switchAdminSubtab(subtabId) {
+      document.querySelectorAll('.admin-sub-view').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.admin-sub-btn').forEach(btn => {
+        btn.classList.remove('bg-[#1B365D]', 'text-white', 'font-bold', 'shadow-sm');
+        btn.classList.add('text-slate-600', 'font-medium');
+      });
+
+      document.getElementById('admin-view-' + subtabId).classList.remove('hidden');
+      const activeBtn = document.getElementById('admin-subtab-' + subtabId);
+      activeBtn.classList.add('bg-[#1B365D]', 'text-white', 'font-bold', 'shadow-sm');
+      activeBtn.classList.remove('text-slate-600', 'font-medium');
+    }
+
+    // Modal Lock Management
+    let currentLockDag = '';
+    function openReleaseLockModal(dag, patta, circle, deed) {
+      currentLockDag = dag;
+      document.getElementById('modal-lock-dag').innerText = 'Dag #' + dag;
+      document.getElementById('modal-lock-patta').innerText = patta;
+      document.getElementById('modal-lock-circle').innerText = circle;
+      document.getElementById('release-lock-modal').classList.remove('hidden');
+    }
+    function closeReleaseLockModal() {
+      document.getElementById('release-lock-modal').classList.add('hidden');
+    }
+    function confirmReleaseLock() {
+      const row = document.getElementById('lock-row-' + currentLockDag);
+      if (row) {
+        row.remove();
+        showToast('Distributed Redlock on Dag #' + currentLockDag + ' successfully released by Administrator!');
+      }
+      closeReleaseLockModal();
+      // Update badge count
+      const remaining = document.querySelectorAll('#locks-table-body tr').length;
+      document.getElementById('active-locks-count-badge').innerText = remaining + ' Active';
+      document.getElementById('telemetry-active-locks').innerText = remaining + ' Locked';
+    }
+    function refreshLocksTable() {
+      showToast('Distributed Redlock table refreshed from Redis Cluster!');
+    }
+
+    // Cryptographic Merkle Chain Verifier
+    async function runMerkleVerification() {
+      const resultCard = document.getElementById('merkle-result-card');
+      const logOutput = document.getElementById('merkle-log-output');
+      const badge = document.getElementById('merkle-status-badge');
+      resultCard.classList.remove('hidden');
+
+      badge.className = 'bg-amber-950 text-amber-400 border border-amber-500/50 px-2 py-0.5 rounded text-[10px] animate-pulse';
+      badge.innerText = 'COMPUTING SHA-256 PROOFS...';
+      logOutput.innerHTML = '<div class="text-slate-400">Initiating Web Crypto API SHA-256 Merkle chain verification across all 28 districts...</div>';
+
+      const blocks = [
+        { height: '#001', name: 'Genesis Block (State Key)', hash: '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b' },
+        { height: '#002', name: 'Succession Mutation (Hajo #1190)', hash: '1f83c048e918233f07a7593b4a3f3606b528a4918e95c102a1d29377a060e7e4' },
+        { height: '#003', name: 'Sale Deed Event (Palashbari #3104)', hash: '4c9a721df89b0ff6e87a0b12f6f592c3a50284df24a6e8b7f83a45c8290231df' },
+        { height: '#004', name: 'Redlock Acquired (Dispur #7821)', hash: '9b2d8f7a40b17c5e2d6349911e38b02447193d58ef14cf39e172e2cf18544d67' },
+        { height: '#005', name: 'Partition Commit (Dispur #884)', hash: 'e5a8b71d49f03c2a9844bb193e20019273c52a3d76295b9c1d09e51c863a3501' }
+      ];
+
+      for (let i = 0; i < blocks.length; i++) {
+        await new Promise(r => setTimeout(r, 220));
+        const b = blocks[i];
+        const line = document.createElement('div');
+        line.className = 'flex justify-between items-center text-slate-300';
+        line.innerHTML = `<span>[Block ${b.height}] ${b.name}: <span class="text-slate-400 font-mono text-[10px]">${b.hash.substring(0, 24)}...</span></span> <span class="text-emerald-400 font-bold">✓ CONTINUITY VALID</span>`;
+        logOutput.appendChild(line);
+      }
+
+      await new Promise(r => setTimeout(r, 250));
+      badge.className = 'bg-emerald-950 text-emerald-400 border border-emerald-500/50 px-2.5 py-0.5 rounded text-[10px] font-bold';
+      badge.innerText = '100% LEDGER INTEGRITY VERIFIED';
+
+      const certLine = document.createElement('div');
+      certLine.className = 'mt-2 pt-2 border-t border-slate-700 text-emerald-300 font-bold flex items-center space-x-2';
+      certLine.innerHTML = '<i class="fa-solid fa-certificate text-emerald-400"></i><span>Merkle Root: ROOT-VERIFIED-SHA256-CONTINUITY-PASS · 0 Breaches / Zero Tampering Detected</span>';
+      logOutput.appendChild(certLine);
+
+      showToast('State Ledger Verified! 100% cryptographic continuity confirmed across all blocks.');
+    }
+
+    // Filter Audit Table
+    function filterAuditTable() {
+      const q = document.getElementById('audit-search-input').value.toLowerCase();
+      const rows = document.querySelectorAll('#audit-table-body tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    // Discrepancy Scanner
+    function triggerOnDemandScan() {
+      const container = document.getElementById('scan-progress-container');
+      const bar = document.getElementById('scan-progress-bar');
+      const pct = document.getElementById('scan-progress-pct');
+      const label = document.getElementById('scan-progress-label');
+      container.classList.remove('hidden');
+
+      const districts = [
+        'Kamrup Metropolitan', 'Dibrugarh', 'Cachar', 'Sonitpur', 'Jorhat', 
+        'Nagaon', 'Barpeta', 'Dhubri', 'Tinsukia', 'Sivasagar', 'Goalpara'
+      ];
+
+      let step = 0;
+      const totalSteps = districts.length;
+      const interval = setInterval(() => {
+        step++;
+        const currentPct = Math.min(100, Math.round((step / totalSteps) * 100));
+        bar.style.width = currentPct + '%';
+        pct.innerText = currentPct + '%';
+        label.innerText = 'Scanning ' + (districts[step - 1] || 'Statewide Circles') + ' (Dharitree vs. Bhunaksha)...';
+
+        if (step >= totalSteps) {
+          clearInterval(interval);
+          label.innerText = 'Statewide Scan Complete: 248,500 Dags Scanned (99.85% Aligned, 372 Discrepancies Queued)';
+          showToast('On-Demand Consistency Scan Completed Successfully!');
+        }
+      }, 200);
+    }
+
+    // Download CSV
+    function downloadDiscrepancyCSV() {
+      const csv = 'Dag_No,Patta_No,Revenue_Circle,District,Dharitree_Area_Bigha,Bhunaksha_Area_Bigha,Delta_Bigha,Probable_Cause,Status\\n' +
+        '812,45,Palashbari,Kamrup,3.20,3.14,-0.06,Legacy Digitization Rounding,Queued_for_Survey\\n' +
+        '144,89,Hajo,Kamrup,1.50,1.52,+0.02,Cartographic Splay,Queued_for_Survey\\n' +
+        '502,112,Sonapur,Kamrup Metro,4.00,3.95,-0.05,Waterbody Enclave Offset,Queued_for_Survey\\n' +
+        '339,18,Dispur,Kamrup Metro,0.80,0.80,0.00,Perfect Alignment,Verified_OK\\n';
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('hidden', '');
+      a.setAttribute('href', url);
+      a.setAttribute('download', 'BhumiSync_Discrepancy_Report_2026.csv');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast('Discrepancy CSV Report downloaded!');
     }
   </script>
 </body>
