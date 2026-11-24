@@ -163,7 +163,7 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
                       ParagraphStyle('BannerH', parent=style_body, textColor=c_primary, fontSize=8.5, leading=11.5))
         ],
         [
-            Paragraph("<b>BhumiSync (ভূমি-সংযোজক)</b>: Real-time Asynchronous Distributed Synchronization Across Dharitree, Bhunaksha & NGDRS",
+            Paragraph("<b>BhumiSync (Bhumi-Sanjojak)</b>: Real-time Asynchronous Distributed Synchronization Across Dharitree, Bhunaksha & NGDRS",
                       style_title)
         ],
         [
@@ -215,9 +215,9 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
         style_body
     ))
     story.append(Paragraph(
-        "<b>BhumiSync (ভূমি-সংযোজক)</b> solves this fundamental gap by establishing a non-intrusive, real-time event-driven synchronization middleware. "
+        "<b>BhumiSync (Bhumi-Sanjojak)</b> solves this fundamental gap by establishing a non-intrusive, real-time event-driven synchronization middleware. "
         "Built on Change Data Capture (Debezium/Kafka) and an orchestrator-based Saga distributed transaction pattern, BhumiSync guarantees that "
-        "any approved change in Dharitree, Bhunaksha, or NGDRS automatically and atomically propagates across all platforms in under 2 seconds, with zero data divergence.",
+        "any approved change in Dharitree, Bhunaksha, or NGDRS automatically and atomically propagates across all platforms in Smaller than 2 seconds, with zero data divergence.",
         style_body
     ))
 

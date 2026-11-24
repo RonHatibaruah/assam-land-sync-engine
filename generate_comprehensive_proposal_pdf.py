@@ -166,7 +166,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
                       style_cover_title)
         ],
         [
-            Paragraph("<b>Solution Name:</b> BhumiSync (ভূমি-সংযোজক) — Real-time Asynchronous Event-Driven Synchronization Engine<br/>"
+            Paragraph("<b>Solution Name:</b> BhumiSync (Bhumi-Sanjojak) — Real-time Asynchronous Event-Driven Synchronization Engine<br/>"
                       "<b>Lead Applicant:</b> Ron Hatibaruah | <b>Target Department:</b> Revenue & Disaster Management Department, Assam<br/>"
                       "<b>Total Grant Requested:</b> ₹40,00,000 (₹40.0 Lakhs) | <b>Duration:</b> 9 Months | <b>Copyright © 2026 Ron Hatibaruah</b>",
                       style_cover_sub)
@@ -193,7 +193,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
                 "<b>Bhunaksha</b> for cadastral GIS vector parcels, and <b>NGDRS (e-Panjeeyan)</b> for deed registration at Sub-Registrar Offices (SROs). "
                 "Currently, updates made in one system take 15 to 45 days to reflect across others, necessitating manual re-entry by Lat Mandals and Circle Officers. "
                 "This latency enables fraudulent double-registration, causes boundary-area discrepancies between Jamabandi and maps, and creates heavy administrative backlogs.<br/><br/>"
-                "<b>BhumiSync (ভূমি-সংযোজক)</b> introduces an event-driven integration middleware built on non-intrusive Change Data Capture (Debezium/Kafka) "
+                "<b>BhumiSync (Bhumi-Sanjojak)</b> introduces an event-driven integration middleware built on non-intrusive Change Data Capture (Debezium/Kafka) "
                 "and an orchestrator-based Saga distributed transaction pattern with PostGIS cadastral topology solvers. "
                 "Whenever a deed is registered or a mutation approved, BhumiSync executes an atomic, sub-second (avg. 420 ms) multi-system synchronization across Dharitree, "
                 "Bhunaksha, and NGDRS with zero data divergence, programmatic double-sell locking, and SHA-256 tamper-proof auditability.",
@@ -235,7 +235,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
     # -------------------------------------------------------------
     story.append(Paragraph("2. Proposed Solution & Key Features", style_h1))
     story.append(Paragraph(
-        "<b>BhumiSync (ভূমি-সংযোজক)</b> is an enterprise-grade integration middleware built on an asynchronous Distributed Transaction Saga Orchestrator with Change Data Capture (CDC).<br/>"
+        "<b>BhumiSync (Bhumi-Sanjojak)</b> is an enterprise-grade integration middleware built on an asynchronous Distributed Transaction Saga Orchestrator with Change Data Capture (CDC).<br/>"
         "<b>Main Modules:</b><br/>"
         "• <i>Event Mesh & CDC Ingestion Engine:</i> Uses Debezium/Kafka to monitor database transaction logs across Dharitree and NGDRS, publishing immutable domain events within milliseconds.<br/>"
         "• <i>Distributed Saga Transaction Orchestrator:</i> Guarantees atomicity across disparate databases. If spatial validation fails in Bhunaksha, automated compensating transactions roll back partial updates.<br/>"
@@ -513,7 +513,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         "• <i>Pilot Sites:</i> 2 Designated Revenue Circles (e.g., Dispur Urban Circle and a semi-rural circle like Palashbari/Hajo).<br/>"
         "• <i>Phase 1 (Shadow Mode - 4 Weeks):</i> Ingests live transactions passively, comparing simulated sync outputs against manual officer entries without modifying production records.<br/>"
         "• <i>Phase 2 (Active Pilot - 8 Weeks):</i> Live, authorized synchronization across 500+ registered deeds and mutations with weekly divergence audits.<br/>"
-        "• <i>Success Metrics:</i> >99.5% automated synchronization success rate, zero data divergence, sub-2-second sync latency, and positive officer usability feedback.",
+        "• <i>Success Metrics:</i> Greater Than 99.5% automated synchronization success rate, zero data divergence, sub-2-second sync latency, and positive officer usability feedback.",
         style_body
     ))
     story.append(Spacer(1, 10))
@@ -525,7 +525,7 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         ],
         [
             Paragraph(
-                "I, <b>Ron Hatibaruah (Lead Applicant)</b>, hereby certify that the proposed solution <b>BhumiSync (ভূমি-সংযোজক)</b> has been architected in strict compliance with the rules, data privacy laws, "
+                "I, <b>Ron Hatibaruah (Lead Applicant)</b>, hereby certify that the proposed solution <b>BhumiSync (Bhumi-Sanjojak)</b> has been architected in strict compliance with the rules, data privacy laws, "
                 "and technical specifications established by the Government of Assam and the Government of India (including MeitY Guidelines, NDSAP, and the DPDP Act 2023). "
                 "The indicative grant budget of ₹40.0 Lakhs is realistic, strictly accounted for, and commits ₹20.0 Lakhs directly to core technical engineering capabilities.<br/><br/>"
                 "<b>DISCLAIMER:</b> This proposal dossier and accompanying software architecture were authored and submitted by Lead Applicant Ron Hatibaruah for the North East Seva First Innovation Challenge (NESFIC) 2026 under problem statement NESFIC-D-49. Simulated data and cadastral parcels are synthetic and generated strictly for technical feasibility benchmarking. This is not an official Government of Assam production website.<br/>"

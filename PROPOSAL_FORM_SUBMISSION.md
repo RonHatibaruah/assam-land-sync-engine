@@ -32,14 +32,14 @@ In Assam's land administration ecosystem, land governance relies on three primar
 6. Cadastral map in Bhunaksha is separately updated weeks later by draftsman/GIS staff.
 
 **Intended Outcome:**
-A unified, real-time event-driven synchronization middleware—**BhumiSync (ভূমি-সংযোজক)**. Any verified change in one system (e.g., deed registration, court order, inheritance, or field survey) executes an automated, atomic, two-phase distributed update across Dharitree, Bhunaksha, and NGDRS with zero manual re-entry and complete auditability.
+A unified, real-time event-driven synchronization middleware—**BhumiSync (Bhumi-Sanjojak)**. Any verified change in one system (e.g., deed registration, court order, inheritance, or field survey) executes an automated, atomic, two-phase distributed update across Dharitree, Bhunaksha, and NGDRS with zero manual re-entry and complete auditability.
 
 ---
 
 ### Field 2: Proposed solution & key features (Word Count: ~440 words)
 
 **Solution Overview:**
-**BhumiSync (ভূমি-সংযোজক)** is an enterprise-grade, event-driven integration middleware built on an asynchronous Distributed Transaction Saga Orchestrator with Change Data Capture (CDC). It establishes an authoritative, real-time synchronization bridge between Dharitree, Bhunaksha, and NGDRS across Assam’s 28+ districts and 150+ revenue circles.
+**BhumiSync (Bhumi-Sanjojak)** is an enterprise-grade, event-driven integration middleware built on an asynchronous Distributed Transaction Saga Orchestrator with Change Data Capture (CDC). It establishes an authoritative, real-time synchronization bridge between Dharitree, Bhunaksha, and NGDRS across Assam’s 28+ districts and 150+ revenue circles.
 
 **Core Architectural Modules:**
 1. **Event Mesh & CDC Ingestion Engine:** Utilizes non-intrusive Change Data Capture (via Debezium/Kafka) monitoring transactional logs across Dharitree (PostgreSQL/Oracle) and NGDRS. Whenever a mutation order is signed or a sale deed is registered, an immutable domain event (`LandRecordUpdatedEvent`) is published within milliseconds.
