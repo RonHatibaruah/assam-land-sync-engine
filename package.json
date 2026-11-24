@@ -1,0 +1,10 @@
+{
+  "name": "assam-land-sync-engine",
+  "version": "1.0.0",
+  "description": "BhumiSync (Bhumi-Sanjojak): Automatic Synchronisation Across Land Record Systems in Assam (NESFIC-D-49)",
+  "scripts": {
+    "build": "echo 'Static build successful: index.html and assets ready for Cloudflare Pages deployment'"
+  },
+  "author": "Ron Hatibaruah",
+  "license": "MIT"
+}
