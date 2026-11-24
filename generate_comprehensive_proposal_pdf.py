@@ -228,6 +228,12 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         "<b>Intended Outcome:</b> A unified, real-time event-driven synchronization middleware ensuring any verified change executes an automated, atomic two-phase distributed update across all systems in Smaller than 2 seconds.",
         style_body
     ))
+    story.append(Spacer(1, 6))
+
+    if os.path.exists("assets/before_after_flow.png"):
+        story.append(Image("assets/before_after_flow.png", width=487, height=220))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 1:</b> Strategic Workflow Comparison — Current Fragmented Practice versus BhumiSync Real-Time Distributed Saga Mesh.</font>", style_callout))
     story.append(Spacer(1, 8))
 
     # -------------------------------------------------------------
@@ -414,6 +420,12 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         "<b>Certifications:</b> Full compliance with MeitY GIGW, NDSAP, and mandatory Cert-IN empaneled VAPT clearance before live pilot deployment.",
         style_body
     ))
+    story.append(Spacer(1, 6))
+
+    if os.path.exists("assets/security_asdc_topology.png"):
+        story.append(Image("assets/security_asdc_topology.png", width=487, height=225))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 6:</b> Government Security Architecture & ASDC Hosting Topology — 3-Zone isolation, mTLS 1.3, Keycloak IAM, and DPDP Act 2023 tokenized data vault.</font>", style_callout))
     story.append(Spacer(1, 8))
 
     # -------------------------------------------------------------
@@ -428,6 +440,12 @@ def build_pdf(filename="Comprehensive_Proposal_Document_NESFIC_D49.pdf"):
         "<b>Comparison with Existing Practices:</b> Unlike fragile batch scripts (24–48 hr sync latency) or manual paper-backed reconciliation (15–45 days), BhumiSync operates in sub-second real-time with zero human data re-entry and complete non-repudiation.",
         style_body
     ))
+    story.append(Spacer(1, 6))
+
+    if os.path.exists("assets/fraud_window_timeline.png"):
+        story.append(Image("assets/fraud_window_timeline.png", width=487, height=195))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 7:</b> Eliminating Double Registration Title Fraud — Distributed Redlock closes the 15-45 day duplicate sale vulnerability window to 0 seconds.</font>", style_callout))
     story.append(Spacer(1, 8))
 
     # -------------------------------------------------------------

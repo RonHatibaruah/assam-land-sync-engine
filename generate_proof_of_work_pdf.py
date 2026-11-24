@@ -220,9 +220,15 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
         "any approved change in Dharitree, Bhunaksha, or NGDRS automatically and atomically propagates across all platforms in Smaller than 2 seconds, with zero data divergence.",
         style_body
     ))
+    story.append(Spacer(1, 6))
+
+    if os.path.exists("assets/before_after_flow.png"):
+        story.append(Image("assets/before_after_flow.png", width=487, height=225))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 1:</b> Strategic Workflow Comparison — Current Fragmented Practice (15-45 days latency, manual re-entry) versus BhumiSync Real-Time Distributed Saga Mesh (sub-second atomic synchronization).</font>", style_callout))
+    story.append(Spacer(1, 10))
 
     # 2. System Architecture Flow
-    story.append(Spacer(1, 6))
     story.append(Paragraph("2. Solution Architecture & Data Flow", style_h1))
     story.append(Paragraph(
         "The figure below outlines the end-to-end integration topology of BhumiSync. It captures how events generated at the SRO, Circle Office, or Lat Mandal levels "
@@ -231,9 +237,15 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
     ))
     
     if os.path.exists("assets/arch_diagram.png"):
-        story.append(Image("assets/arch_diagram.png", width=487, height=270))
+        story.append(Image("assets/arch_diagram.png", width=487, height=255))
         story.append(Spacer(1, 4))
-        story.append(Paragraph("<font size=7.5 color='#64748B'><b>Figure 1:</b> BhumiSync Enterprise Integration Architecture showing Debezium CDC ingestion, Kafka event mesh, Saga Orchestrator, PostGIS spatial reconciliation, and stakeholder dashboards.</font>", style_callout))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 2:</b> BhumiSync Enterprise Integration Architecture showing Debezium CDC ingestion, Kafka event mesh, Saga Orchestrator, PostGIS spatial reconciliation, and stakeholder dashboards.</font>", style_callout))
+    story.append(Spacer(1, 8))
+
+    if os.path.exists("assets/fraud_window_timeline.png"):
+        story.append(Image("assets/fraud_window_timeline.png", width=487, height=195))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 3:</b> Double Registration Fraud Window Elimination — Instant Distributed Redlock acquired upon deed signing at SRO level blocks duplicate conveyancing statewide.</font>", style_callout))
     story.append(Spacer(1, 10))
 
     # Page Break for Wireframes & Prototypes
@@ -250,7 +262,7 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
     if os.path.exists("assets/wireframe_dashboard.png"):
         story.append(Image("assets/wireframe_dashboard.png", width=487, height=230))
         story.append(Spacer(1, 4))
-        story.append(Paragraph("<font size=7.5 color='#64748B'><b>Figure 2:</b> High-fidelity wireframe interfaces for Circle Officer side-by-side Jamabandi & Cadastral verification (left) and Lat Mandal mobile field partitioning tool with real-time Euler-Poincaré polygon validation (right).</font>", style_callout))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 4:</b> High-fidelity wireframe interfaces for Circle Officer side-by-side Jamabandi & Cadastral verification (left) and Lat Mandal mobile field partitioning tool with real-time Euler-Poincaré polygon validation (right).</font>", style_callout))
     story.append(Spacer(1, 8))
 
     story.append(Paragraph("Detailed Step-by-Step User Journey:", style_h2))
@@ -275,9 +287,15 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
     ))
 
     if os.path.exists("assets/sync_latency_benchmark.png"):
-        story.append(Image("assets/sync_latency_benchmark.png", width=487, height=210))
+        story.append(Image("assets/sync_latency_benchmark.png", width=487, height=195))
         story.append(Spacer(1, 4))
-        story.append(Paragraph("<font size=7.5 color='#64748B'><b>Figure 3:</b> Prototype latency measurements across individual synchronization phases versus the 2,000 ms target SLA limit.</font>", style_callout))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 5:</b> Prototype latency measurements across individual synchronization phases versus the 2,000 ms target SLA limit.</font>", style_callout))
+    story.append(Spacer(1, 8))
+
+    if os.path.exists("assets/chaos_rollback_flow.png"):
+        story.append(Image("assets/chaos_rollback_flow.png", width=487, height=205))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 6:</b> Chaos Engineering & Compensating Rollback Flowchart — Automatic undo execution across Dharitree and Bhunaksha upon polygon collision or network failure.</font>", style_callout))
     story.append(Spacer(1, 8))
 
     # Benchmark Results Table
@@ -386,7 +404,13 @@ def build_pdf(filename="Proof_of_Work_Solution_Evidence_NESFIC_D49.pdf"):
         ('PADDING', (0,0), (-1,-1), 5),
     ]))
     story.append(case_table)
-    story.append(Spacer(1, 12))
+    story.append(Spacer(1, 8))
+
+    if os.path.exists("assets/citizen_ekhaitan_mockup.png"):
+        story.append(Image("assets/citizen_ekhaitan_mockup.png", width=487, height=210))
+        story.append(Spacer(1, 4))
+        story.append(Paragraph("<font size=7 color='#64748B'><b>Figure 7:</b> Citizen Experience Mockup — Instant automated WhatsApp/SMS approval notification and QR-verifiable digital Jamabandi & Cadastral map certificate.</font>", style_callout))
+    story.append(Spacer(1, 10))
 
     # 6. Core Mathematical Invariants & Code Implementation
     story.append(Paragraph("6. Core Mathematical Invariant Enforcement", style_h1))

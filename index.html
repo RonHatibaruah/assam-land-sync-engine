@@ -368,11 +368,35 @@
           Non-intrusive CDC (Debezium), Kafka Event Mesh, Distributed Saga Orchestration, and PostGIS TopoJSON reconciliation across Assam's land record infrastructure.
         </p>
         
-        <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-2 text-center">
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-2 text-center mb-6">
           <img src="assets/arch_diagram.png" class="max-h-[420px] mx-auto object-contain rounded-lg" alt="BhumiSync Architecture Diagram" />
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <!-- Before vs After & Fraud Window Visuals Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-3">
+            <span class="text-xs font-bold text-[#1B365D] block mb-2">1. Workflow Comparison (Current Practice vs. BhumiSync)</span>
+            <img src="assets/before_after_flow.png" class="w-full rounded-lg border border-slate-200 object-contain" alt="Before vs After Flow" />
+          </div>
+          <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-3">
+            <span class="text-xs font-bold text-[#1B365D] block mb-2">2. Double Registration Title Fraud Window Elimination</span>
+            <img src="assets/fraud_window_timeline.png" class="w-full rounded-lg border border-slate-200 object-contain" alt="Fraud Window Timeline" />
+          </div>
+        </div>
+
+        <!-- Chaos Rollback & ASDC Security Topology Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-3">
+            <span class="text-xs font-bold text-[#1B365D] block mb-2">3. Distributed Saga Chaos Compensating Rollback</span>
+            <img src="assets/chaos_rollback_flow.png" class="w-full rounded-lg border border-slate-200 object-contain" alt="Chaos Rollback Flow" />
+          </div>
+          <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-3">
+            <span class="text-xs font-bold text-[#1B365D] block mb-2">4. ASDC Hosting Topology &amp; DPDP Act 2023 Security Vault</span>
+            <img src="assets/security_asdc_topology.png" class="w-full rounded-lg border border-slate-200 object-contain" alt="ASDC Security Topology" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
           <div class="bg-blue-50/60 border border-blue-200/80 p-4 rounded-xl">
             <h4 class="font-bold text-xs text-blue-900 mb-1 flex items-center space-x-1.5">
               <i class="fa-solid fa-bolt text-blue-600"></i>
